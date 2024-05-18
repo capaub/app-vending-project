@@ -17,8 +17,7 @@ public class OpenFoodFactApiService {
 
         System.out.println("PRODUCT NAME: " + product.getProductName());
 
-
-        SelectedImages selectedImages = product.getSelectedImages();
+        String selectedImages = product.getImageFrontUrl();
 
         return product;
     }
