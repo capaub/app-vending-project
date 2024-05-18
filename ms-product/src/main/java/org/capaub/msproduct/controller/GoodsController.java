@@ -18,8 +18,7 @@ public class GoodsController {
 
     @GetMapping("/getGoods/{barcode}")
     public Product getApiProduct(@PathVariable String barcode) {
-        Product goods = goodsService.getGood(barcode);
-        return goods;
+        return goodsService.getProduct(barcode);
     }
 
     @PostMapping("/saveGoods/{barcode}")

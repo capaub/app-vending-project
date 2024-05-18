@@ -18,16 +18,15 @@ public class GoodsService {
     }
 
     public Goods getGoods(String barcode) {
-        Product product = this.offService.getProductDetails(barcode);
+        Product product = getProduct(barcode);
         Goods goods = new Goods();
         goods.setBarcode(product.getCode());
         goods.setBrand(product.getBrands());
         goods.setImg(product.getImageSmallUrl());
         return goods;
     }
-    public Product getGood(String barcode) {
-        Product product = this.offService.getProductDetails(barcode);
-        return product;
+    public Product getProduct(String barcode) {
+        return this.offService.getProductDetails(barcode);
     }
     public boolean saveGoods(Goods goods) {
         if (!this.goodsRepository.existsGoodsByBarcode(goods.getBarcode())){
