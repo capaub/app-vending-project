@@ -8,33 +8,23 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class QrCodeGeneratorService {
 
-    protected String generateAndSaveQrCode(Map<String, String> data, String filename) throws IOException, WriterException {
-        String url = data.get("url");
-        String tags;
-
-        if (data.containsKey("batch_id")) {
-            tags = data.get("batch_id") + "@" + data.get("batch_id");
-            filename = "ms-product/src/main/resources/static/batchQrcode" + File.separator + tags + ".jpg";
-        }
+    public BufferedImage qrCodeGenerator(Map<String, String> data) throws  WriterException {
 
         Map<EncodeHintType, Object> hintMap = new HashMap<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-        hintMap.put(EncodeHintType.MARGIN, 4);
+        hintMap.put(EncodeHintType.MARGIN, 2);
         hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(url, BarcodeFormat.QR_CODE, 300, 300, hintMap);
+        BitMatrix bitMatrix = qrCodeWriter.encode(data.toString(), BarcodeFormat.QR_CODE, 300, 300, hintMap);
 
         BufferedImage qrImage = new BufferedImage(300, 300, BufferedImage.TYPE_INT_RGB);
         qrImage.createGraphics();
@@ -52,9 +42,7 @@ public class QrCodeGeneratorService {
             }
         }
 
-        ImageIO.write(qrImage, "JPG", new File(filename));
-
-        return filename;
+        return qrImage;
     }
 
 }
