@@ -2,11 +2,12 @@ package org.capaub.msproduct.controller;
 
 import com.google.zxing.WriterException;
 import org.capaub.msproduct.service.BatchService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.capaub.msproduct.service.ManageFilesService;
+import org.capaub.msproduct.service.QrCodeGeneratorService;
+import org.capaub.msproduct.service.dto.QrCodeDto;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,17 +16,30 @@ import java.util.Map;
 @RequestMapping
 public class BatchController {
     private final BatchService batchService;
+    private final QrCodeGeneratorService qrCodeGeneratorService;
+    private final ManageFilesService manageFilesService;
 
-    public BatchController(BatchService batchService) {
+    public BatchController(BatchService batchService, QrCodeGeneratorService qrCodeGeneratorService, ManageFilesService manageFilesService) {
         this.batchService = batchService;
+        this.qrCodeGeneratorService = qrCodeGeneratorService;
+        this.manageFilesService = manageFilesService;
     }
 
-    @GetMapping("/createQr/{batch_id}")
-    public String getQr(@PathVariable String batch_id) throws IOException, WriterException {
-        Map<String,String> data = new HashMap<>();
-        data.put("url","localhost");
-        data.put("filename","test");
-        data.put("batch_id",batch_id);
-        return batchService.getQrcode(data);
+    @PostMapping("/createQr")
+    public String createQr(@RequestBody QrCodeDto qrCodeDto) throws IOException, WriterException {
+
+        String filepath = "ms-product/src/main/resources/static/batchQrcode/" + qrCodeDto.getFilename() + ".txt";
+
+        Map<String, String> data = new HashMap<>();
+        data.put("filename", qrCodeDto.getFilename());
+        data.put("batch_id", qrCodeDto.getBatchId().toString());
+        data.put("instant", qrCodeDto.getNow().toString());
+
+        BufferedImage qrCode = qrCodeGeneratorService.qrCodeGenerator(data);
+        manageFilesService.saveQrCodeJson(qrCode, filepath);
+        return "SUCCESS: qr code is create and save at " + filepath;
+
     }
+
 }
+
