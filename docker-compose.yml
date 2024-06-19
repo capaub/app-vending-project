@@ -1,0 +1,45 @@
+networks:
+  vending-app-network:
+
+services:
+
+  configserver:
+    image: capaub/config-server-vending-app
+    mem_limit: 700m
+    ports:
+      - 8084:9090
+    networks:
+      - vending-app-network
+    healthcheck:
+      test: curl --fail --silent localhost:9090/actuator/health/readiness | grep UP || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  eurekaserver:
+    image: capaub/eureka-config-vending-app
+    mem_limit: 700m
+    ports:
+      - 8085:9091
+    networks:
+      - vending-app-network
+    healthcheck:
+      test: curl --fail --silent localhost:9091/actuator/health/readiness | grep UP || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:9090/
+
+#       docker-compose up -d permettra de démarrer l'ensemble des conteneurs en arrière-plan ;
+#       docker-compose ps permettra de voir le statut de l'ensemble de la stack ;
+#       docker-compose logs -f --tail 5 permettra d'afficher les logs de la stack ;
+#       docker-compose stop permettra d'arrêter l'ensemble des services d'une stack ;
+#       docker-compose down permettra de détruire l'ensemble des ressources d'une stack ;
+#       docker-compose config permettra de valider la syntaxe du fichier docker-compose.yml ;

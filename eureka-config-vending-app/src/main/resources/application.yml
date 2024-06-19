@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: eureka-config-vending-app
+  config:
+    import: optional:configserver:http://localhost:9090/

@@ -7,15 +7,27 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ms-product" />
+        <module name="security" />
         <module name="ms-customer" />
+        <module name="sprint_chatJS" />
+        <module name="config-server-vending-app" />
+        <module name="ms-product" />
+        <module name="eureka-config-vending-app" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-serveur-vending-app" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-server-vending-app" options="-parameters" />
+      <module name="eureka-config-vending-app" options="-parameters" />
+      <module name="eureka-serveur-vending-app" options="-parameters" />
       <module name="ms-customer" options="-parameters" />
       <module name="ms-product" options="-parameters" />
+      <module name="security" options="-parameters" />
+      <module name="sprint_chatJS" options="-parameters" />
     </option>
   </component>
 </project>

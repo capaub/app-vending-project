@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="a voir">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/node_modules/chart.js/dist/chart.umd.js"></script>
+</head>
+<body>
+
+<div id="jsonData" th:text="${jsonData}" th:hidden="hidden"></div>
+    <canvas id="acquisitions"></canvas>
+<script type="module" src="/src/acquisitions.js"></script>
+</body>
+</html>

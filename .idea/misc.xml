@@ -6,6 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/ms-product/pom.xml" />
         <option value="$PROJECT_DIR$/ms-customer/pom.xml" />
+        <option value="$PROJECT_DIR$/sprint_chatJS/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-serveur-vending-app/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-config-vending-app/pom.xml" />
+        <option value="$PROJECT_DIR$/config-server-vending-app/pom.xml" />
+        <option value="$PROJECT_DIR$/security/pom.xml" />
       </list>
     </option>
   </component>
