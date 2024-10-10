@@ -1,0 +1,12 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: eureka-server-vending-app
+  config:
+    import: optional:configserver:http://localhost:9090/
+
+
+
+
+

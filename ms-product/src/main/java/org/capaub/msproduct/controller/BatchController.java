@@ -1,6 +1,8 @@
 package org.capaub.msproduct.controller;
 
 import com.google.zxing.WriterException;
+import lombok.AllArgsConstructor;
+import org.capaub.msproduct.entities.Batch;
 import org.capaub.msproduct.service.BatchService;
 import org.capaub.msproduct.service.ManageFilesService;
 import org.capaub.msproduct.service.QrCodeGeneratorService;
@@ -13,17 +15,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@AllArgsConstructor
+@RequestMapping("/api/batches")
 public class BatchController {
     private final BatchService batchService;
     private final QrCodeGeneratorService qrCodeGeneratorService;
     private final ManageFilesService manageFilesService;
 
-    public BatchController(BatchService batchService, QrCodeGeneratorService qrCodeGeneratorService, ManageFilesService manageFilesService) {
-        this.batchService = batchService;
-        this.qrCodeGeneratorService = qrCodeGeneratorService;
-        this.manageFilesService = manageFilesService;
-    }
+    @PostMapping("/create/{goodsId}")
+    public Batch createBatch(@RequestBody)
 
     @PostMapping("/createQr")
     public String createQr(@RequestBody QrCodeDto qrCodeDto) throws IOException, WriterException {

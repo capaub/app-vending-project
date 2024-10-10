@@ -62,11 +62,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeRequests(auth->auth.requestMatchers("/token/**").permitAll())
-                .authorizeRequests(auth->auth.anyRequest().authenticated())
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oa -> oa.jwt(Customizer.withDefaults()))
                 .httpBasic(Customizer.withDefaults())
+                .authorizeRequests(auth->auth.requestMatchers("/token/**").permitAll())
+                .authorizeRequests(auth->auth.anyRequest().authenticated())
                 .build();
     }
 

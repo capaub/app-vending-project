@@ -12,11 +12,27 @@ import java.util.Date;
 public class Batch {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private Date dlc;
-    private int quantity;
+    private Integer quantity;
     private Date soldOutAt;
     private String qrCode;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Goods goodsId;
+    @JoinColumn(name = "goods_id")
+    private Goods goods;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Date();
+    }
 }

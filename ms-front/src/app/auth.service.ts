@@ -27,10 +27,10 @@ export class AuthService {
 
     return this.http.post<any>(this.loginUrl, body, { headers }).pipe(
       map(response => {
-        if (response.token) {
-          localStorage.setItem("token", response.token);
-          if (response.refreshToken) {
-            localStorage.setItem("refreshToken", response.refreshToken);
+        if (response.access_token) {
+          localStorage.setItem("token", response.access_token);
+          if (response.refresh_token) {
+            localStorage.setItem("refreshToken", response.refresh_token);
           }
         }
         return response;
@@ -38,8 +38,13 @@ export class AuthService {
     );
   }
 
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
   }
 
   public get loggedIn(): boolean {
@@ -48,5 +53,9 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  public getRefreshToken(): string | null {
+    return localStorage.getItem('refreshToken');
   }
 }

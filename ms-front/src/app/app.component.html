@@ -3,10 +3,11 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="spacer"></span>
-  <button mat-button routerLink="/customer">Customer</button>
+  <button mat-button routerLink="/customerDTO">Customer</button>
   <button mat-button routerLink="/vending">Vending</button>
   <button mat-button routerLink="/stock">Stock</button>
-  <button mat-raised-button routerLink="/login">Login</button>
+  <button mat-raised-button *ngIf="!authService.isAuthenticated()" routerLink="/login">Login</button>
+  <button mat-raised-button *ngIf="authService.isAuthenticated()" (click)="onLogout()" routerLink="/logout">Logout</button>
 </mat-toolbar>
 
 <mat-drawer-container>
@@ -18,7 +19,7 @@
       </mat-list-item>
       <mat-list-item>
         <mat-icon>dashboard</mat-icon>
-        <button mat-button routerLink="/user">Users</button>
+        <button mat-button routerLink="/appUserDTO">Users</button>
       </mat-list-item>
 
     </mat-nav-list>

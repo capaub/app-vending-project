@@ -1,10 +1,9 @@
 package org.capaub.msproduct.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Date;
 
 @Entity
 @Getter @Setter @ToString
@@ -17,4 +16,19 @@ public class Goods {
     private String barcode;
     private String brand;
     private String img;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Date();
+    }
 }

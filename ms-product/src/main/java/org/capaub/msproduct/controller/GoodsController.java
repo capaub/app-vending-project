@@ -8,7 +8,7 @@ import pl.coderion.model.Product;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/products")
 public class GoodsController {
     private final GoodsService goodsService;
 

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ms-product
+  config:
+    import: optional:configserver:http://localhost:9090/
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/vendo
+    username: root
+    password: ACDS
+
+server:
+  port: 8089
