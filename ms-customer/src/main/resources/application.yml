@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-customer
+  config:
+    import: optional:configserver:http://localhost:9090/
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/vendo
+    username: root
+    password: ACDS
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9091/eureka/
+
+server:
+  port: 8081
