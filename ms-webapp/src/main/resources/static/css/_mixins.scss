@@ -1,0 +1,8 @@
+@mixin displayCustomerInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
+}

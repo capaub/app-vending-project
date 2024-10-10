@@ -1,0 +1,25 @@
+<main class="Container_main Main CustomerContainer customerContainer">
+    <h1 class="Main_title">Clients</h1>
+
+    <button class="btnAddCustomer" data-text="Nouveau client"></button>
+
+        <div th:if="${#lists.isEmpty(customers)}" class="grid_container">
+            <p>Aucun client enregistré</p>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(customers)}" class="Main_customers">
+            <div th:replace="~{fragments/_customers}"></div>
+        </div>
+
+    <div class="container_add_vending_form hidden">
+        <div th:replace="~{fragments/_addVendingToCustomer}"></div>
+    </div>
+
+    <script type="module" th:src="@{/js/SnapShotForm.js}"></script>
+    <script type="module" th:src="@{/js/addVendingToCustomer.js}"></script>
+    <script type="module" th:src="@{/js/showNewCustomerForm.js}"></script>
+    <script type="module" th:src="@{/js/newCustomer.js}"></script>
+    <script type="module" th:src="@{/js/generateCustomerVending.js}"></script>
+    <script type="module" th:src="@{/js/sortCustomer.js}"></script>
+
+</main>

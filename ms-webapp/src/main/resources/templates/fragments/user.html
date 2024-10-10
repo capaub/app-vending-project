@@ -1,0 +1,58 @@
+<form th:fragment="userForm(user)"
+      class="grid_container_form grid_container"
+      method="post"
+      th:data-user-id="${user.id}">
+    <input class="input-form"
+           type="text"
+           th:value="${user.firstname}"
+           id="firstname"
+           name="firstname"
+           disabled>
+    <input class="input-form"
+           type="text"
+           th:value="${user.lastname}"
+           id="lastname"
+           name="lastname"
+           disabled>
+    <input class="input-form"
+           type="email"
+           th:value="${user.email}"
+           id="mail"
+           name="email"
+           disabled>
+    <select class="input-form select"
+            th:field="${roles}"
+            id="role"
+            name="role"
+            disabled>
+            <option th:each="role : ${roles}"
+                    th:value="${role.id}"
+                    th:text="${role.label}"
+                    th:selected="${role.id} == ${user.authorities}">
+            </option>
+    </select>
+
+    <div th:if="${user.connectedAt != null}">
+        <p class="text" th:text="${#dates.format(user.connectedAt, 'dd-MM-yyyy')}"></p>
+        <p class="text" th:text="${#dates.format(user.connectedAt, 'HH:mm:ss')}"></p>
+    </div>
+    <div th:unless="${user.connectedAt != null}">
+        <p class="text">aucune</p>
+        <p class="text">connexion</p>
+    </div>
+
+    <div class="buttons_actions_container">
+        <button class="save hidden">
+            <span class="material-symbols-outlined">save_as</span>
+        </button>
+        <button class="cancel hidden">
+            <span class="material-symbols-outlined">cancel</span>
+        </button>
+        <button class="update">
+            <span class="material-symbols-outlined">edit</span>
+        </button>
+        <button class="delete">
+            <span class="material-symbols-outlined">delete_forever</span>
+        </button>
+    </div>
+</form>

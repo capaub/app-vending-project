@@ -1,0 +1,51 @@
+<section class="Main_customers_customer Customer"
+         th:fragment="_customers"
+         th:each="customer : ${customers}"
+         th:data-customer-id="${customer.id}"
+         th:data-company-name="${customer.companyName}">
+    <h3 class="Customer_name"
+        th:text="${#strings.toUpperCase(customer.companyName)}">
+        <span>infos</span>
+    </h3>
+
+    <div class="Customer_container">
+        <div class="Customer_container_vendings"
+             th:classappend="${customerStatus[customer.id] != null ? customerStatus[customer.id] : ''}"
+             th:if="${vending[customer.id] != null}">
+            <div class="Customer_vendings_vending Vending"
+                 th:each="vending : ${vendings[customer.id]}"
+                 th:classappend="${status[vending.id] != null} ? ${status[vending.id]} : ''"
+                 th:data-vending-id="${vending.id}">
+                <img class="Vending_img" th:src="@{/img/vending/vending.svg}"
+                     alt="illustratoin d'un distributeur automatique">
+                <div class="Vending_footer">
+                    <p class="Vending_footer_name"
+                       th:text="${vending.name}"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="Customer_container_infos">
+            <div class="Customer_container_infos_contact">
+                <div class="Customer_container_infos_contact_group">
+                    <h3 class="Customer_container_infos_contact_group_title">Contact</h3>
+
+                    <ul class="Customer_container_infos_contact_group_ul">
+                        <li th:text="${customer.phone}"></li>
+                        <li th:text="${customer.firstname + ' ' + customer.lastname}"></li>
+                        <li th:text="${customer.email}"></li>
+                    </ul>
+                </div>
+                <div class="Customer_container_infos_contact_group">
+                    <h3 class="Customer_container_infos_contact_group_title">Horaires</h3>
+                    <ul class="Customer_container_infos_contact_group_ul">
+                        <li>lundi-vendredi : 8h00-16h00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Customer_container_infos_maps">
+                <img class="Customer_container_infos_maps_img" th:src="@{/img/maps.jpg}" alt="">
+            </div>
+        </div>
+    </div>
+</section>

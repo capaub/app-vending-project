@@ -1,0 +1,116 @@
+<main class="Container_main Main CustomerContainer customerContainer">
+    <h1 class="Main_title">Création d'un client</h1>
+
+    <button class="btnBackToCustomers" data-text="Annuler"></button>
+
+    <div class="container_new_customer_form">
+
+        <form method="POST"
+              class="form_container new_customer_form">
+            <fieldset class="fieldset">
+                <legend>Renseignements cLient</legend>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="siret"
+                           name="siret"
+                           maxlength="14"
+                           data-placeholder="ex: 123456789"
+                           required="required">
+                    <label for="siret">n° de siret</label>
+                </div>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="companyName"
+                           name="companyName"
+                           data-placeholder="ex: Mon entreprise"
+                           required="required">
+                    <label for="companyName">Nom de la société</label>
+                </div>
+            </fieldset>
+            <fieldset class="fieldset">
+
+                <div class="elements">
+                    <input type="text"
+                           id="country"
+                           name="country"
+                           data-placeholder="ex: France"
+                           required="required">
+                    <label for="country">Pays</label>
+                </div>
+
+                <div class="elements">
+                    <input type="text"
+                           id="city"
+                           name="city"
+                           data-placeholder="ex: Marseille"
+                           required="required">
+                    <label for="city">Ville</label>
+                </div>
+
+                <div class="elements">
+                    <input type="number"
+                           id="postalCode"
+                           name="postalCode"
+                           data-max-length="5"
+                           data-placeholder="ex: 83640"
+                           required="required">
+                    <label for="postalCode">Code postal</label>
+                </div>
+
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="streetAddress"
+                           name="streetAddress"
+                           data-placeholder="ex: Avenue Julien Jourdan"
+                           required="required">
+                    <label for="streetAddress">Rue</label>
+                </div>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="email"
+                           name="email"
+                           data-placeholder="ex: a.dupont@mail.com"
+                           required="required">
+                    <label for="email">Email</label>
+                </div>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="phone"
+                           name="phone"
+                           maxlength="10"
+                           data-placeholder="ex: 04 10 10 10 10"
+                           required="required">
+                    <label for="phone">Téléphone</label>
+                </div>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="firstname"
+                           name="firstname"
+                           data-placeholder="ex: Alfred"
+                           required="required">
+                    <label for="firstname">Prénom</label>
+                </div>
+                <div class="elements">
+                    <input type="text"
+                           class=""
+                           id="lastname"
+                           name="lastname"
+                           data-placeholder="ex: Dupont"
+                           required="required">
+                    <label for="lastname">Nom</label>
+                </div>
+
+            </fieldset>
+
+            <input type="submit" class="new_customer_submit">
+
+        </form>
+
+    </div>
+</main>

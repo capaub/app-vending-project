@@ -1,0 +1,16 @@
+<ul class="grid_container">
+    <li>Prénom</li>
+    <li>Nom</li>
+    <li>Mail</li>
+    <li>Rôle</li>
+    <li>Connexion</li>
+    <li>Modifier</li>
+</ul>
+<div th:if="${#lists.isEmpty(users)}" class="grid_container">
+    <p>Aucuns utilisateurs enregistré</p>
+</div>
+<div th:unless="${#lists.isEmpty(users)}" class="grid_container">
+    <div th:each="user : ${users}">
+        <div th:replace="~{fragments/user :: userForm(user=${user})}"></div>
+    </div>
+</div>

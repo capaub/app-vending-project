@@ -1,0 +1,109 @@
+
+
+
+  .vendingGrid{
+    @media screen and (max-width: 780px) {
+      top: -10%;
+      transform: scale($scaleFactor780px);
+      margin: 0;
+    }
+    @media screen and (max-width: 630px) {
+      top: -20%;
+      transform:  scale($scaleFactor630px);
+      margin: 0;
+    }
+
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-radius: 0.5em;
+  padding: 2em 5em 7em 2em;
+  border: solid;
+  width: max-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2em;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 1.7em;
+    left: 1.7em;
+    right: 4.7em;
+    bottom: 6.7em;
+    border: solid 1px;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top: 12em;
+    height: 100px;
+    right: 0.8em;
+    width: 50px;
+    border: solid 1px;
+  }
+
+  & ul.plateau {
+    display: grid;
+    justify-items: center;
+    vertical-align: bottom;
+    column-gap: 0.2em;
+    transition: 0.2s ;
+    border-radius: 5px;
+    &:hover{
+      transform: scale(130%);
+      box-shadow: $boxShadow;
+      position: relative;
+      z-index:2;
+      opacity: 1.1;
+      border-radius: 5px;
+    }
+
+    & li.spiral {
+      position: relative;
+      width: $vendingLocationWidth;
+      height: $vendingLocationHeight;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s ;
+      border-radius: 5px;
+      &:hover{
+        transform: scale(130%);
+        position: relative;
+        z-index: 3;
+        box-shadow: 0 4px 8px -1px #00000075;
+        border-radius: 5px;
+      }
+
+      & .batch_picture, .batch_picture:hover{
+        border-radius: 5px;
+      }
+
+      &::after{
+        content: "";
+        position: absolute;
+        width: $spiralWidth;
+        height: $spiralHeight;
+        bottom: 10px;
+        right: calc(($vendingLocationWidth - ($spiralWidth + ($spiralSize * 2))) / 2);
+        border-radius: 50%;
+        border: solid $spiralSize;
+        border-color: black black black transparent;
+        transform: rotate(316deg);
+      }
+
+      & .location_identifier{
+        position: absolute;
+        width: 100%;
+        padding: 0.1em 0;
+        bottom: 0;
+        background-color: black;
+        color: white;
+        text-align: center;
+        z-index: 2;
+      }
+    }
+  }
+}

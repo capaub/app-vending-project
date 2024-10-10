@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <title>Vendo_Logic</title>
+</head>
+<body>
+<div th:replace="~{fragments/header}"></div>
+<div class="Container">
+    <main class="Container_main Main">
+        <h1 class="Main_title">Formulaire d'inscription</h1>
+        <div class="container_register_form">
+            <form th:action="@{/signUp}" th:object="${completeRegistrationDTO}" method="POST" class="form_container">
+
+                <div class="fieldset">
+                    <div class="elements">
+                        <input required type="text" id="company_name" th:field="*{name}">
+                        <label for="company_name">Nom de l'entreprise</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="text" id="siret" th:field="*{siret}" maxlength="14" pattern="{0,9}">
+                        <label for="siret">N° de siret</label>
+                    </div>
+
+                </div>
+                <div class="fieldset">
+
+                    <div class="elements">
+                        <input required type="text" id="firstname" th:field="*{firstname}">
+                        <label for="firstname">Prénom</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="text" id="lastname" th:field="*{lastname}">
+                        <label for="lastname">Nom</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="text" id="country" th:field="*{country}">
+                        <label for="country">Pays</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="text" id="city" th:field="*{city}">
+                        <label for="city">Ville</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="number" id="postal_code" th:field="*{postalCode}" data-max-length="5">
+                        <label for="postal_code">Code postal</label>
+                    </div>
+
+                    <div class="elements">
+                        <input required type="text" id="street_name" th:field="*{streetAddress}">
+                        <label for="street_name">Rue</label>
+                    </div>
+
+                    <div class="fieldset">
+
+                        <div class="elements">
+                            <input required type="email" id="email" th:field="*{email}">
+                            <label for="email">Email</label>
+                        </div>
+
+                        <div class="elements">
+                            <input required type="password" id="password" th:field="*{password}">
+                            <label for="password">Mot de passe</label>
+                        </div>
+
+                        <!--                    <div class="elements">-->
+                        <!--                        <input required type="password" id="password_confirm" name="field_password_confirm">-->
+                        <!--                        <label for="password_confirm">Confirmer mot de passe</label>-->
+                        <!--                    </div>-->
+
+                    </div>
+
+                </div>
+
+                <input type="submit" name="form_register" value="Inscription">
+                <a th:href="@{/signIn}">Connexion</a>
+
+            </form>
+        </div>
+    </main>
+</div>
+<div th:replace="~{fragments/footer}"></div>
+<script type="module" th:src="@{/js/global.js}"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+
+<aside class="Container_sidebar Sidebar" th:fragment="sidebar">
+    <nav class="Sidebar_links" th:classappend="${(#strings.endsWith(request.requestURI, '/signIn')
+                        or #strings.endsWith(request.requestURI, '/signUp')) ? 'hidden' : ''}">
+
+        <a th:href="@{/customers/getAllCustomersByCompanyId}"
+           class="Sidebar_links_link"
+           th:classappend="${fragmentPath != 'fragments/customers' ? '' : 'selected'}">Clients</a>
+
+        <a th:href="@{/vending}"
+           class="Sidebar_links_link <?= empty($_GET['page']) || ($_GET['page'] !== PAGE_VENDINGS) ? '' : 'selected' ?>">Machines</a>
+        <a th:href="@{/stock}"
+           class="Sidebar_links_link <?= empty($_GET['page']) || ($_GET['page'] !== PAGE_STOCK) ? '' : 'selected' ?>">Stock</a>
+
+        <a th:href="@{/users/getAllUsersByCompanyId}"
+           class="Sidebar_links_link"
+           th:classappend="${fragmentPath != 'fragments/users' ? '' : 'selected'}">Utilisateurs</a>
+
+        <a th:href="@{/logout}" class="Sidebar_links_link">Deconnexion</a>
+
+    </nav>
+</aside>
