@@ -1,4 +1,4 @@
-package org.capaub.msproduct.service;
+package org.capaub.msexternalapi.service;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -44,5 +44,4 @@ public class QrCodeGeneratorService {
 
         return qrImage;
     }
-
 }

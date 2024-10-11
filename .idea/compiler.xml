@@ -10,6 +10,7 @@
         <module name="security" />
         <module name="sprint_chatJS" />
         <module name="ms-webapp" />
+        <module name="ms-external-api" />
         <module name="eureka-server-vending-app" />
         <module name="config-server-vending-app" />
         <module name="ms-product" />
@@ -25,6 +26,19 @@
         </processorPath>
         <module name="ms-company" />
         <module name="ms-vending" />
+      </profile>
+      <profile name="Annotation profile for ms-customer" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar" />
+        </processorPath>
         <module name="ms-customer" />
       </profile>
     </annotationProcessing>
@@ -41,6 +55,7 @@
       <module name="eureka-serveur-vending-app" options="-parameters" />
       <module name="ms-company" options="-parameters" />
       <module name="ms-customer" options="-parameters" />
+      <module name="ms-external-api" options="-parameters" />
       <module name="ms-product" options="-parameters" />
       <module name="ms-vending" options="-parameters" />
       <module name="ms-webapp" options="-parameters" />

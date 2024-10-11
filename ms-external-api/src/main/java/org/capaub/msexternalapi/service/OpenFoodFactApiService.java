@@ -1,7 +1,8 @@
-package org.capaub.msproduct.service;
+package org.capaub.msexternalapi.service;
 
 import org.springframework.stereotype.Service;
-import pl.coderion.model.*;
+import pl.coderion.model.Product;
+import pl.coderion.model.ProductResponse;
 import pl.coderion.service.OpenFoodFactsWrapper;
 import pl.coderion.service.impl.OpenFoodFactsWrapperImpl;
 
@@ -15,9 +16,8 @@ public class OpenFoodFactApiService {
 
         Product product = productResponse.getProduct();
 
-        System.out.println(product);
-
         String selectedImages = product.getImageFrontUrl();
+        System.out.println(selectedImages);
 
         return product;
     }
