@@ -8,10 +8,12 @@
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/customers' ? '' : 'selected'}">Clients</a>
 
-        <a th:href="@{/vending}"
-           class="Sidebar_links_link <?= empty($_GET['page']) || ($_GET['page'] !== PAGE_VENDINGS) ? '' : 'selected' ?>">Machines</a>
-        <a th:href="@{/stock}"
-           class="Sidebar_links_link <?= empty($_GET['page']) || ($_GET['page'] !== PAGE_STOCK) ? '' : 'selected' ?>">Stock</a>
+        <a th:href="@{/vendings}"
+           class="Sidebar_links_link"
+           th:classappend="${fragmentPath != 'fragments/vendings' ? '' : 'selected'}">Machines</a>
+        <a th:href="@{/products/stock}"
+           class="Sidebar_links_link"
+           th:classappend="${fragmentPath != 'fragments/stock' ? '' : 'selected'}">Stock</a>
 
         <a th:href="@{/users/getAllUsersByCompanyId}"
            class="Sidebar_links_link"

@@ -13,11 +13,11 @@ public class GoodsService {
 
     public GoodsDTO getGoods(String barcode) {
         Product product = getProduct(barcode);
-        GoodsDTO goods = new GoodsDTO();
-        goods.setBarcode(product.getCode());
-        goods.setBrand(product.getBrands());
-        goods.setImg(product.getImageSmallUrl());
-        return goods;
+        GoodsDTO goodsDTO = new GoodsDTO();
+        goodsDTO.setBarcode(product.getCode());
+        goodsDTO.setBrand(product.getBrands());
+        goodsDTO.setImgUrl(product.getImageSmallUrl());
+        return goodsDTO;
     }
 
     public Product getProduct(String barcode) {

@@ -11,7 +11,10 @@ public class BatchDTO {
     private Integer id;
     private Date dlc;
     private Integer quantity;
-    private Date soldOutAt;
-    private String qrCode;
+    private String barCode;
+    private String qrCodePath;
     private Integer goodsId;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date soldOutAt;
 }

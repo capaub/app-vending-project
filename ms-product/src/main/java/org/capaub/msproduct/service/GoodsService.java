@@ -19,8 +19,9 @@ public class GoodsService {
     private final GoodsMapper goodsMapper;
     private final ExternalApiClient externalApiClient;
 
-    public GoodsDTO saveGoods(String barcode) {
+    public GoodsDTO saveGoods(String barcode, Integer companyId) {
         GoodsDTO goodsDTO = externalApiClient.getGoods(barcode);
+        goodsDTO.setCompanyId(companyId);
         Goods goods = goodsMapper.toGoods(goodsDTO);
         return goodsMapper.toGoodsDTO(goodsRepository.save(goods));
     }
@@ -29,14 +30,14 @@ public class GoodsService {
         return this.goodsRepository.existsGoodsByBarcode(barcode);
     }
 
-    public GoodsDTO findGoodsByBarcode(String barCode) {
+    public GoodsDTO findGoodsByBarcode(String barCode, Integer companyId) {
         Goods goods = goodsRepository.findGoodsByBarcode(barCode)
-                .orElseGet(() -> goodsMapper.toGoods(saveGoods(barCode)));
+                .orElseGet(() -> goodsMapper.toGoods(saveGoods(barCode, companyId)));
         return goodsMapper.toGoodsDTO(goods);
     }
 
-    public GoodsDTO getGoodsByBarcode(String barcode) {
-        Goods goods = goodsRepository.findGoodsByBarcode(barcode).get();
+    public GoodsDTO getGoodsById(Integer goodsId) {
+        Goods goods = goodsRepository.findById(goodsId).get();
         return goodsMapper.toGoodsDTO(goods);
     }
 

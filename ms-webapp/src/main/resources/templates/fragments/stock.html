@@ -1,0 +1,36 @@
+<main class="Container_main Main Main_stock">
+    <h1 class="Main_title">Stock principal</h1>
+
+    <button class="btnAddBatch" data-text="Ajouter un lot"></button>
+
+    <section class="list_container batch">
+        <ul class="grid_container">
+            <li class="colHeader">Code-barre</li>
+            <li class="colHeader">DLC</li>
+            <li class="colHeader">Quantité</li>
+            <li class="colHeader">Modifier le</li>
+            <li class="colHeader">Image</li>
+        </ul>
+        <div th:if="${#lists.isEmpty(products)}">
+            <ul class="grid_container">
+                <li>Aucun lot à afficher</li>
+            </ul>
+        </div>
+        <div th:if="${not #lists.isEmpty(products)}">
+            <div th:each="entry : ${products}">
+                <div th:replace="~{fragments/_batch :: batchFragment(${entry.key}, ${entry.value})}"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <div class="container_new_batch_form hidden">
+        <div th:replace="~{fragments/_newBatch}"></div>
+    </div>
+
+</main>
+
+<script type="module" th:src="@{/js/styleImageStockList.js}"></script>
+<script type="module" th:src="@{/js/newBatch.js}"></script>
+<script type="module" th:src="@{/js/changeBatchInfo.js}"></script>

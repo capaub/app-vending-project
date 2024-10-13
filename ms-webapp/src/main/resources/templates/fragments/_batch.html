@@ -1,0 +1,31 @@
+<ul th:fragment="batchFragment(barcode, goods)"
+    class="grid_container list_stock"
+    th:attr="data-barcode=${barcode}">
+    <li class="batch_info">
+        <p th:text="${barcode}"></p>
+    </li>
+
+    <li class="batch_info">
+        <div th:if="${#lists.size(goods.batches) > 1}">
+            <select name="Batch" id="Batch" class="date select_dlc_batch">
+                <option th:each="batch : ${goods.batches}"
+                        th:value="${batch.batchId}"
+                        th:text="${#strings.substring(batch.dlc, 0, 10)}"></option>
+            </select>
+        </div>
+        <p th:unless="${#lists.size(goods.batches) > 1}" th:text="${#strings.substring(goods.batches[0].dlc, 0, 10)}"></p>
+    </li>
+
+    <li class="batch_info quantity">
+        <p th:text="${goods.batches[0].quantity}"></p>
+    </li>
+
+    <li class="batch_info updated_at">
+        <div class="updated_at_date"><em th:text="${#strings.substring(goods.batches[0].updatedAtTime, 0, 10)}"></em></div>
+        <div class="updated_at_time"><em th:text="${#strings.substring(goods.batches[0].updatedAtTime, 11, 19)}"></em></div>
+    </li>
+
+    <li class="batch_info" th:attr="data-product-barcode=${barcode}">
+        <div class="batchPicture"></div>
+    </li>
+</ul>

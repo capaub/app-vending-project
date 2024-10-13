@@ -25,4 +25,9 @@ public class SessionService {
         }
         return appUserDTO;
     }
+
+    public Integer getCompanyId() {
+        return (Integer) session.getAttribute("companyId");
+    }
+
 }
