@@ -34,8 +34,8 @@
     </select>
 
     <div th:if="${user.connectedAt != null}">
-        <p class="text" th:text="${#dates.format(user.connectedAt, 'dd-MM-yyyy')}"></p>
-        <p class="text" th:text="${#dates.format(user.connectedAt, 'HH:mm:ss')}"></p>
+        <p class="text connected_at_date" th:text="${#dates.format(user.connectedAt, 'dd-MM-yyyy')}"></p>
+        <p class="text connected_at_time" th:text="${#dates.format(user.connectedAt, 'HH:mm:ss')}"></p>
     </div>
     <div th:unless="${user.connectedAt != null}">
         <p class="text">aucune</p>
