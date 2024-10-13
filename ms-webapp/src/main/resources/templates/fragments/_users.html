@@ -9,8 +9,6 @@
 <div th:if="${#lists.isEmpty(users)}" class="grid_container">
     <p>Aucuns utilisateurs enregistré</p>
 </div>
-<div th:unless="${#lists.isEmpty(users)}" class="grid_container">
-    <div th:each="user : ${users}">
-        <div th:replace="~{fragments/user :: userForm(user=${user})}"></div>
-    </div>
+<div th:unless="${#lists.isEmpty(users)}"
+     th:replace="~{fragments/user :: userForm(${users})}">
 </div>

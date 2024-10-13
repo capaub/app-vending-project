@@ -46,7 +46,6 @@ public class AppUserService {
         if (appUserDTO.getPassword() != null) {
             appUser.setPassword(passwordEncoder.encode(appUserDTO.getPassword()));
         }
-        appUser.setAuthorities(Collections.singletonList(AppRole.USER));
         AppUser appUserSaved = appUserRepository.save(appUser);
 
         return appUserMapper.toAppUserDTO(appUserSaved);
@@ -98,4 +97,7 @@ public class AppUserService {
                 .collect(Collectors.toList());
     }
 
+    public void deleteUser(Integer appUserId) {
+        appUserRepository.deleteById(appUserId);
+    }
 }

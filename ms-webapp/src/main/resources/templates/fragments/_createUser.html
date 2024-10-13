@@ -7,29 +7,29 @@
         <legend>Création d'un utilisateur</legend>
 
         <div class="elements">
-            <input required type="text" id="firstname" name="field_firstname">
+            <input required type="text" id="firstname" name="firstname">
             <label for="firstname">Prénom</label>
         </div>
 
         <div class="elements">
-            <input required type="text" id="lastname" name="field_lastname">
+            <input required type="text" id="lastname" name="lastname">
             <label for="lastname">Nom</label>
         </div>
 
         <div class="elements">
-            <input required type="email" id="email" name="field_email">
+            <input required type="email" id="email" name="email">
             <label for="email">Email</label>
         </div>
 
-<!--        <div class="elements">-->
-<!--            <select name="field_role" id="role">-->
-<!--                <?php foreach (User::ROLE_CONF as $key => $value) : ?>-->
-<!--                    <option-->
-<!--                        value="<?= $key ?>" <?= ($key == User::ROLE_SUPPLIER) ? "selected" : "" ?>><?= $value['label'] ?></option>-->
-<!--                <?php endforeach; ?>-->
-<!--            </select>-->
-<!--            <label for="role">Role</label>-->
-<!--        </div>-->
+        <div class="elements">
+            <select name="authorities"
+                    id="authorities">
+                <option th:each="role : ${roles}"
+                        th:value="${role.id}"
+                        th:text="${role.label}"></option>
+            </select>
+            <label for="authorities">Role</label>
+        </div>
 
     </fieldset>
 

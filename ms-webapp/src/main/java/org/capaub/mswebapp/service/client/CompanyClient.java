@@ -17,6 +17,8 @@ public interface CompanyClient {
     AppUserDTO createUser(@RequestBody AppUserDTO appUserDTO);
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/update", consumes = "application/json")
     AppUserDTO updateUser(@RequestBody AppUserDTO appUserDTO);
+    @RequestMapping(method = RequestMethod.POST, value = "/api/users/delete/{id}", consumes = "application/json")
+    void deleteUser(@PathVariable Integer id);
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/getUserByEmail/{email}", consumes = "application/json")
     AppUserDTO getUserByEmail(@PathVariable("email") String email);
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/getUserById/{id}", consumes = "application/json")

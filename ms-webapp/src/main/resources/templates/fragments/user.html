@@ -1,7 +1,8 @@
-<form th:fragment="userForm(user)"
+<form th:fragment="userForm(users)"
+      th:each="user : ${users}"
       class="grid_container_form grid_container"
       method="post"
-      th:data-user-id="${user.id}">
+      th:data-id="${user.id}">
     <input class="input-form"
            type="text"
            th:value="${user.firstname}"
@@ -21,11 +22,11 @@
            name="email"
            disabled>
     <select class="input-form select"
-            th:field="${roles}"
-            id="role"
-            name="role"
+            th:value="${user.authorities}"
+            id="authorities"
+            name="authorities"
             disabled>
-            <option th:each="role : ${roles}"
+            <option th:each="role : ${authorities}"
                     th:value="${role.id}"
                     th:text="${role.label}"
                     th:selected="${role.id} == ${user.authorities}">

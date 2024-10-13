@@ -11,12 +11,12 @@
             <li class="colHeader">Modifier le</li>
             <li class="colHeader">Image</li>
         </ul>
-        <div th:if="${#lists.isEmpty(products)}">
+        <div th:if="${products.size == 0}">
             <ul class="grid_container">
                 <li>Aucun lot à afficher</li>
             </ul>
         </div>
-        <div th:if="${not #lists.isEmpty(products)}">
+        <div th:unless="${products.size == 0}">
             <div th:each="entry : ${products}">
                 <div th:replace="~{fragments/_batch :: batchFragment(${entry.key}, ${entry.value})}"></div>
             </div>

@@ -1,13 +1,11 @@
 package org.capaub.mswebapp.service;
 
 import lombok.AllArgsConstructor;
-import org.capaub.mswebapp.service.dto.AddressDTO;
-import org.capaub.mswebapp.service.dto.AppUserDTO;
-import org.capaub.mswebapp.service.dto.CompanyDTO;
+import org.capaub.mswebapp.service.dto.*;
 import org.capaub.mswebapp.service.client.CompanyClient;
-import org.capaub.mswebapp.service.dto.CompleteRegistrationDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,11 +28,15 @@ public class AppUserService {
         addressDTOToSave.setCompanyId(companyDTO.getId());
         AddressDTO addressDTO = companyClient.createAddress(addressDTOToSave);
 
+        List<String> authorities = new ArrayList<>();
+        authorities.add("ADMIN");
+
         AppUserDTO appUserDTOToSave = new AppUserDTO();
         appUserDTOToSave.setFirstname(completeRegistrationDTO.getFirstname());
         appUserDTOToSave.setLastname(completeRegistrationDTO.getLastname());
         appUserDTOToSave.setEmail(completeRegistrationDTO.getEmail());
         appUserDTOToSave.setPassword(completeRegistrationDTO.getPassword());
+        appUserDTOToSave.setAuthorities(authorities);
         appUserDTOToSave.setCompanyId(companyDTO.getId());
         appUserDTOToSave.setAddressId(addressDTO.getId());
 
@@ -56,5 +58,9 @@ public class AppUserService {
         userDTOToUpdate.setEmail(appUserDTO.getEmail());
         userDTOToUpdate.setAuthorities(appUserDTO.getAuthorities());
         return companyClient.updateUser(userDTOToUpdate);
+    }
+
+    public void deleteUser(Integer id) {
+        companyClient.deleteUser(id);
     }
 }

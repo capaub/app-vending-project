@@ -25,6 +25,11 @@ public class AppUserController {
         return appUserService.updateUser(appUserDTO);
     }
 
+    @PostMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        appUserService.deleteUser(id);
+    }
+
     @PutMapping("/{email}/update-connected-at")
     public ResponseEntity<?> updateConnectedAt(@PathVariable String email) {
         try {

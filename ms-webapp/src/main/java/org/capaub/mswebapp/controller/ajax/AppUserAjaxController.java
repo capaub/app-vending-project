@@ -5,6 +5,7 @@ import org.capaub.mswebapp.service.AppUserService;
 import org.capaub.mswebapp.service.SessionService;
 import org.capaub.mswebapp.service.dto.AppRoleDTO;
 import org.capaub.mswebapp.service.dto.AppUserDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,18 +38,16 @@ public class AppUserAjaxController {
     }
 
     @PostMapping("/update")
-    public ModelAndView updateUser(@RequestBody AppUserDTO appUserDTO, Model model) {
+    public ResponseEntity<AppUserDTO> updateUser(@RequestBody AppUserDTO appUserDTO, Model model) {
         Integer companyId = sessionService.getCompanyId();
         AppUserDTO updatedUser = appUserService.updateUser(appUserDTO);
+        return ResponseEntity.ok(updatedUser);
+    }
 
-        List<AppRoleDTO> roleList = List.of(
-                new AppRoleDTO("ADMIN","administrateur"),
-                new AppRoleDTO("STOCKER","approvisionneur"),
-                new AppRoleDTO("USER","utilisateur")
-        );
-        model.addAttribute("roles",roleList);
+    @PostMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Integer id, Model model) {
+        appUserService.deleteUser(id);
 
-        return new ModelAndView("fragments/user","user", updatedUser);
     }
 
 }
