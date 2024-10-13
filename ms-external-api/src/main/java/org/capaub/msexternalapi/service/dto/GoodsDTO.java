@@ -13,7 +13,7 @@ public class GoodsDTO {
     private Integer id;
     private String barcode;
     private String brand;
-    private String img;
+    private String imgUrl;
     private Date createdAt;
     private Date updatedAt;
 }
