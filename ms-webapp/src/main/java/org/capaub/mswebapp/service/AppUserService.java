@@ -41,8 +41,20 @@ public class AppUserService {
         return companyClient.createUser(appUserDTOToSave);
     }
 
+    public AppUserDTO addUser(AppUserDTO appUserDTO) {
+        return companyClient.createUser(appUserDTO);
+    }
 
     public List<AppUserDTO> getAllUsersByCompanyId(Integer companyId) {
         return companyClient.getAllUsersByCompanyId(companyId);
+    }
+
+    public AppUserDTO updateUser(AppUserDTO appUserDTO) {
+        AppUserDTO userDTOToUpdate = companyClient.getUserById(appUserDTO.getId());
+        userDTOToUpdate.setFirstname(appUserDTO.getFirstname());
+        userDTOToUpdate.setLastname(appUserDTO.getLastname());
+        userDTOToUpdate.setEmail(appUserDTO.getEmail());
+        userDTOToUpdate.setAuthorities(appUserDTO.getAuthorities());
+        return companyClient.updateUser(userDTOToUpdate);
     }
 }

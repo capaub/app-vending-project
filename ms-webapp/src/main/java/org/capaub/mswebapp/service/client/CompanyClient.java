@@ -15,8 +15,12 @@ import java.util.List;
 public interface CompanyClient {
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/create", consumes = "application/json")
     AppUserDTO createUser(@RequestBody AppUserDTO appUserDTO);
+    @RequestMapping(method = RequestMethod.POST, value = "/api/users/update", consumes = "application/json")
+    AppUserDTO updateUser(@RequestBody AppUserDTO appUserDTO);
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/getUserByEmail/{email}", consumes = "application/json")
     AppUserDTO getUserByEmail(@PathVariable("email") String email);
+    @RequestMapping(method = RequestMethod.GET, value = "/api/users/getUserById/{id}", consumes = "application/json")
+    AppUserDTO getUserById(@PathVariable("id") Integer id);
     @RequestMapping(method = RequestMethod.PUT, value = "api/users/{email}/update-connected-at", consumes = "application/json")
     void updateConnectedAt(@PathVariable("email") String email);
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/getAllUsersByCompanyId/{id}", consumes = "application/json")

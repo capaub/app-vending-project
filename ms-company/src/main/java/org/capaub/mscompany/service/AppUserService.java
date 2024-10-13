@@ -1,7 +1,6 @@
 package org.capaub.mscompany.service;
 
 import lombok.AllArgsConstructor;
-import org.capaub.mscompany.entity.Address;
 import org.capaub.mscompany.entity.AppRole;
 import org.capaub.mscompany.entity.AppUser;
 import org.capaub.mscompany.entity.Company;
@@ -34,24 +33,35 @@ public class AppUserService {
         if (companyRepository.findById(appUserDTO.getCompanyId()).isEmpty()) {
             throw new IllegalArgumentException("Invalid company id");
         }
-        if (addressRepository.findById(appUserDTO.getAddressId()).isEmpty()) {
-            throw new IllegalArgumentException("Invalid address id");
-        }
+
         if (appUserRepository.findByEmail(appUserDTO.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Un utilisateur avec cet email existe déjà.");
         }
 
         Company company = companyRepository.findById(appUserDTO.getCompanyId()).get();
-        Address address = addressRepository.findById(appUserDTO.getAddressId()).get();
 
         AppUser appUser = appUserMapper.toAppUser(appUserDTO);
         appUser.setCompany(company);
-        appUser.setAddress(address);
-        appUser.setPassword(passwordEncoder.encode(appUserDTO.getPassword()));
+        appUser.setAddress(null);
+        if (appUserDTO.getPassword() != null) {
+            appUser.setPassword(passwordEncoder.encode(appUserDTO.getPassword()));
+        }
         appUser.setAuthorities(Collections.singletonList(AppRole.USER));
         AppUser appUserSaved = appUserRepository.save(appUser);
 
         return appUserMapper.toAppUserDTO(appUserSaved);
+    }
+
+    public AppUserDTO updateUser(AppUserDTO appUserDTO) {
+        AppUser appUser = appUserMapper.toAppUser(appUserDTO);
+        if (appUser.getAddress() != null) {
+            if (appUser.getAddress().getId() == null) {
+                addressRepository.save(appUser.getAddress());
+            }
+        } else {
+            appUser.setAddress(null);
+        }
+        return appUserMapper.toAppUserDTO(appUserRepository.save(appUser));
     }
 
     public void updateConnectedAt(String email) {

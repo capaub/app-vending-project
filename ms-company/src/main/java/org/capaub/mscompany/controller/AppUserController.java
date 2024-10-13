@@ -19,6 +19,12 @@ public class AppUserController {
         AppUserDTO savedAppUser = appUserService.createUser(appUserDTO);
         return ResponseEntity.ok(savedAppUser);
     }
+
+    @PostMapping("/update")
+    public AppUserDTO updateUser(@RequestBody AppUserDTO appUserDTO) {
+        return appUserService.updateUser(appUserDTO);
+    }
+
     @PutMapping("/{email}/update-connected-at")
     public ResponseEntity<?> updateConnectedAt(@PathVariable String email) {
         try {
