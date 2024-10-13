@@ -32,6 +32,7 @@ public class Batch {
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
+        updatedAt = new Date();
     }
 
     @PreUpdate

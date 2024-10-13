@@ -13,7 +13,9 @@ public class GoodsDTO {
     private Integer id;
     private String barcode;
     private String brand;
-    private String img;
+    private String imgUrl;
+    private Integer companyId;
+
     private Date createdAt;
     private Date updatedAt;
 
@@ -41,12 +43,20 @@ public class GoodsDTO {
         this.brand = brand;
     }
 
-    public String getImg() {
-        return img;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public Date getCreatedAt() {

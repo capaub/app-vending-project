@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface BatchRepository extends JpaRepository<Batch, Integer> {
 
     Optional<Batch> findBatchByGoodsAndDlc(Goods goods,Date dlc);
+
+    List<Batch> findAllByGoods_CompanyId(Integer companyId);
 }

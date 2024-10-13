@@ -14,8 +14,8 @@ public class BatchController {
     private final BatchService batchService;
     private final ManageFilesService manageFilesService;
 
-    @PostMapping("/create")
-    public BatchDTO createBatch(@RequestBody BatchDTO batchDTO) {
-        return batchService.createBatch(batchDTO);
+    @PostMapping("/create/{companyId}")
+    public BatchDTO createBatch(@RequestBody BatchDTO batchDTO, @PathVariable Integer companyId) {
+        return batchService.createBatch(batchDTO, companyId);
     }
 }

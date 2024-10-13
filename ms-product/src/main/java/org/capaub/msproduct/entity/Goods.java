@@ -15,7 +15,8 @@ public class Goods {
     private Integer id;
     private String barcode;
     private String brand;
-    private String img;
+    private String imgUrl;
+    private Integer companyId;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -24,6 +25,7 @@ public class Goods {
 
     @PrePersist
     protected void onCreate() {
+        updatedAt = new Date();
         createdAt = new Date();
     }
 
@@ -56,12 +58,12 @@ public class Goods {
         this.brand = brand;
     }
 
-    public String getImg() {
-        return img;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImgUrl(String imgPath) {
+        this.imgUrl = imgPath;
     }
 
     public Date getCreatedAt() {
@@ -78,5 +80,13 @@ public class Goods {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 }
