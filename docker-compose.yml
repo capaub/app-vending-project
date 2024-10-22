@@ -43,3 +43,27 @@ services:
 #       docker-compose stop permettra d'arrêter l'ensemble des services d'une stack ;
 #       docker-compose down permettra de détruire l'ensemble des ressources d'une stack ;
 #       docker-compose config permettra de valider la syntaxe du fichier docker-compose.yml ;
+
+################################################## PHP #################################################################
+
+#  php-service:
+#    image: php:8.2-cli
+#    container_name: php-service
+#    build:
+#      context: ./ms-php
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka/
+#    depends_on:
+#      - eureka-server
+
+
+#  FROM php:8.2-cli
+#  WORKDIR /app
+#  COPY . /app
+#  RUN composer install
+#  CMD ["php", "/app/bin/console", "eureka:register"]
+
+#       php bin/console app:eureka:register => pour l'enregistrement de PHP au registre d'Eureka ;

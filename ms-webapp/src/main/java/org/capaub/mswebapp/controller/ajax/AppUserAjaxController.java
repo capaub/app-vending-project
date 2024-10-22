@@ -38,14 +38,13 @@ public class AppUserAjaxController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<AppUserDTO> updateUser(@RequestBody AppUserDTO appUserDTO, Model model) {
-        Integer companyId = sessionService.getCompanyId();
+    public ResponseEntity<AppUserDTO> updateUser(@RequestBody AppUserDTO appUserDTO) {
         AppUserDTO updatedUser = appUserService.updateUser(appUserDTO);
         return ResponseEntity.ok(updatedUser);
     }
 
     @PostMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Integer id, Model model) {
+    public void deleteUser(@PathVariable Integer id) {
         appUserService.deleteUser(id);
 
     }

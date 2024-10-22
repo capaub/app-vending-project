@@ -19,6 +19,6 @@ public interface ProductClient {
     @RequestMapping(method = RequestMethod.POST, value = "/api/batches/create/{companyId}", consumes = "application/json")
     BatchDTO createBatch(@RequestBody BatchDTO batchDTO, @PathVariable Integer companyId);
 
-    @RequestMapping(method = RequestMethod.GET,value = "/api/goods/findByBarcode/{barcode}/{companyId}", consumes = "applicaiton/json")
+    @RequestMapping(method = RequestMethod.GET,value = "/api/goods/findByBarcode/{barcode}/{companyId}", consumes = "application/json")
     GoodsDTO getGoods(@PathVariable String barcode, @PathVariable Integer companyId);
 }

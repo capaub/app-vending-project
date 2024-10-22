@@ -43,7 +43,7 @@ public class ProductController {
     public String createBatch(@RequestBody BatchDTO batchDTO) throws IOException {
         Integer companyId = sessionService.getCompanyId();
         productClient.createBatch(batchDTO, companyId);
-        GoodsDTO goodsDTO = productClient.getGoods(batchDTO.getBarCode(), companyId);
+        GoodsDTO goodsDTO = productClient.getGoods(batchDTO.getBarcode(), companyId);
         imageServerService.saveImage(goodsDTO);
         return "redirect:/products/stock";
     }

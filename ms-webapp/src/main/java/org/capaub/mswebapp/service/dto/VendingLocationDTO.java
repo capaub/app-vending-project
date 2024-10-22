@@ -9,8 +9,9 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrayDTO {
+public class VendingLocationDTO {
     private Integer id;
+    private String location;
     private Integer vendingId;
     private Date createdAt;
     private Date updatedAt;

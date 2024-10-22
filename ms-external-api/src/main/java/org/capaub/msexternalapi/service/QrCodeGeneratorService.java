@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Service
 public class QrCodeGeneratorService {
-
+//todo change data to url
     public BufferedImage qrCodeGenerator(Map<String, String> data) throws  WriterException {
 
         Map<EncodeHintType, Object> hintMap = new HashMap<>();
@@ -24,6 +24,7 @@ public class QrCodeGeneratorService {
         hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        // todo
         BitMatrix bitMatrix = qrCodeWriter.encode(data.toString(), BarcodeFormat.QR_CODE, 300, 300, hintMap);
 
         BufferedImage qrImage = new BufferedImage(300, 300, BufferedImage.TYPE_INT_RGB);
