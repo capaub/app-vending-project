@@ -6,6 +6,7 @@ import org.capaub.msproduct.service.ManageFilesService;
 import org.capaub.msproduct.service.dto.BatchDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -18,4 +19,15 @@ public class BatchController {
     public BatchDTO createBatch(@RequestBody BatchDTO batchDTO, @PathVariable Integer companyId) {
         return batchService.createBatch(batchDTO, companyId);
     }
+
+    @GetMapping("/get/{id}")
+    public BatchDTO getBatch(@PathVariable Integer id) {
+        return batchService.findBatch(id);
+    }
+
+    @GetMapping("/allByCompanyId/{companyId}")
+    public List<BatchDTO> getAllByCompanyId(@PathVariable Integer companyId) {
+        return batchService.getAllBatchesByCompanyId(companyId);
+    }
+
 }

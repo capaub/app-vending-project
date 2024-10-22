@@ -21,4 +21,8 @@ public class GoodsController {
         return goodsService.findGoodsByBarcode(barcode,companyId);
     }
 
+    @GetMapping("/findById/{id}")
+    public GoodsDTO getGoods(@PathVariable Integer id) {
+        return goodsService.getGoodsById(id);
+    }
 }

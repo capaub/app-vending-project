@@ -1,6 +1,5 @@
 package org.capaub.msproduct.service.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -16,7 +15,7 @@ public class BatchDTO {
     private Integer id;
     private Date dlc;
     private Integer quantity;
-    private String barCode;
+    private String barcode;
     private String qrCodePath;
     private Integer goodsId;
     private Date createdAt;
@@ -47,12 +46,12 @@ public class BatchDTO {
         this.quantity = quantity;
     }
 
-    public String getBarCode() {
-        return barCode;
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setBarCode(String barCode) {
-        this.barCode = barCode;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public String getQrCodePath() {

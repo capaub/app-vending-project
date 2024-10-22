@@ -30,9 +30,9 @@ public class GoodsService {
         return this.goodsRepository.existsGoodsByBarcode(barcode);
     }
 
-    public GoodsDTO findGoodsByBarcode(String barCode, Integer companyId) {
-        Goods goods = goodsRepository.findGoodsByBarcode(barCode)
-                .orElseGet(() -> goodsMapper.toGoods(saveGoods(barCode, companyId)));
+    public GoodsDTO findGoodsByBarcode(String barcode, Integer companyId) {
+        Goods goods = goodsRepository.findGoodsByBarcode(barcode)
+                .orElseGet(() -> goodsMapper.toGoods(saveGoods(barcode, companyId)));
         return goodsMapper.toGoodsDTO(goods);
     }
 

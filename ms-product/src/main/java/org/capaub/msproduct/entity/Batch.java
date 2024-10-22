@@ -16,7 +16,7 @@ public class Batch {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dlc;
     private Integer quantity;
-    private String barCode;
+    private String barcode;
     private String qrCodePath;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "goods_id")
@@ -64,12 +64,12 @@ public class Batch {
         this.quantity = quantity;
     }
 
-    public String getBarCode() {
-        return barCode;
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setBarCode(String barCode) {
-        this.barCode = barCode;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public String getQrCodePath() {

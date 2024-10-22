@@ -25,7 +25,7 @@ public class BatchService {
 
         Batch batchDTOToBatch = batchMapper.batchDTOToBatch(batchDTO);
 
-        GoodsDTO goodsDTO = goodsService.findGoodsByBarcode(batchDTOToBatch.getBarCode(),companyId);
+        GoodsDTO goodsDTO = goodsService.findGoodsByBarcode(batchDTOToBatch.getBarcode(),companyId);
         batchDTOToBatch.setGoods(goodsMapper.toGoods(goodsDTO));
 
         Optional<Batch> batch = batchRepository.findBatchByGoodsAndDlc(goodsMapper.toGoods(goodsDTO), batchDTOToBatch.getDlc());
@@ -45,5 +45,9 @@ public class BatchService {
         return batches.stream()
                 .map(batchMapper::batchToBatchDTO)
                 .collect(Collectors.toList());
+    }
+
+    public BatchDTO findBatch(Integer id) {
+        return batchMapper.batchToBatchDTO(batchRepository.findById(id).get());
     }
 }
