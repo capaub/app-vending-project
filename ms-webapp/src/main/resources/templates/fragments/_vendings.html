@@ -1,0 +1,23 @@
+<ul class="grid_container">
+    <li>Marque</li>
+    <li>Model</li>
+    <li>Nom</li>
+    <li>Plateau max</li>
+    <li>Spirale max</li>
+</ul>
+
+
+<div th:if="${#lists.isEmpty(vendings)}" class="grid_container">
+    <p>Aucune machine à afficher</p>
+</div>
+
+<ul th:unless="${#lists.isEmpty(vendings)}"
+    th:each="vending : ${vendings}"
+    th:data-vending-id="${vending.id}"
+    class="grid_container vending">
+    <li th:data-brand="${vending.brand}" th:text="${vending.brand}"></li>
+    <li th:data-model="${vending.model}" th:text="${vending.model}"></li>
+    <li th:data-name="${vending.name}" th:text="${vending.name}"></li>
+    <li th:data-tray="${vending.nbMaxTray}" th:text="${vending.nbMaxTray}"></li>
+    <li th:data-spiral="${vending.nbMaxSpiral}" th:text="${vending.nbMaxSpiral}"></li>
+</ul>

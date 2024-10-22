@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.SessionService;
 import org.capaub.mswebapp.service.dto.CustomerDTO;
 import org.capaub.mswebapp.service.CustomerService;
+import org.capaub.mswebapp.service.dto.CustomerDataVendingsDTO;
 import org.capaub.mswebapp.service.dto.CustomerWithAddressToSaveDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,19 +27,25 @@ public class CustomerController {
     private final SessionService sessionService;
 
     @GetMapping("/getAllCustomersByCompanyId")
-    public ModelAndView showCustomers(HttpSession session, Model model) {
+    public ModelAndView ShowCustomer(Model model){
         Integer companyId = sessionService.getCompanyId();
-        List<CustomerDTO> customersDTO = customerService.getAllCustomersByCompanyId(companyId);
+        CustomerDataVendingsDTO vendingsDataForCustomer = customerService.getVendingsByCustomers(companyId);
+        List<CustomerDTO> customers = customerService.getAllCustomersByCompanyId(companyId);
 
-        model.addAttribute("companyId", companyId);
         model.addAttribute("fragmentPath","fragments/customers");
-        return new ModelAndView("index","customers", customersDTO);
+        model.addAttribute("customers", customers);
+        model.addAttribute("vendings", vendingsDataForCustomer.getVendingData());
+        model.addAttribute("status", vendingsDataForCustomer.getStatus());
+        model.addAttribute("customersStatus", vendingsDataForCustomer.getCustomersStatus());
+
+        return new ModelAndView("index");
     }
 
     @GetMapping("/create")
     public ModelAndView createCustomer() {
         return new ModelAndView("fragments/_addCustomer", "newCustomer", new CustomerDTO());
     }
+
     @PostMapping("/create")
     public String createCustomer(@RequestBody CustomerWithAddressToSaveDTO customerDTOToSave,
                                  HttpSession session,

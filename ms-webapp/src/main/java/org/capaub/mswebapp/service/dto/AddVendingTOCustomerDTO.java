@@ -7,10 +7,8 @@ import java.util.Date;
 @Setter @Getter @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class VendingPerCustomerDTO {
-    private Integer id;
-    private Date installationDate;
-    private Date removalDate;
+public class AddVendingTOCustomerDTO {
     private Integer vendingId;
     private Integer customerId;
+    private String vendingName;
 }

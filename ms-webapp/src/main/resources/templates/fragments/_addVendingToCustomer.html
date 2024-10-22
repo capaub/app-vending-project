@@ -1,39 +1,39 @@
 <form method="POST"
       class="form_container add_vending_form"
-      data-customerDTO-id="<?= $customerId ?>"
+      data-customer-id=""
       th:fragment="_addVendingToCustomer">
 
     <button class="close closeAddVendingForm">X</button>
 
     <fieldset class="fieldset">
-        <legend><span class="company_name"><?= $companyName ?></span></legend>
+        <legend><span class="company_name"
+                      data-company-name=""></span></legend>
 
         <div class="elements">
-            <select name="field_vending_id" id="vendings" required="required">
-                <?php if (empty($availableVending)) : ?>
-                    <option>
-                        Aucuns D.A. disponible
-                    </option>
-                <?php else: ?>
-                    <option value="">
-                        Choisissez une machine
-                    </option>
-                    <?php foreach ($availableVending as $oVending) : ?>
-                        <option value="<?= $oVending->getId(); ?>">
-                            <?= '[ ' . $oVending->getBrand() . ' ]' . ' - ' . $oVending->getModel(); ?>
-                        </option>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+            <select name="vending"
+                    id="vending"
+                    required="required">
+                <option th:if="${#lists.isEmpty(availableVending)}">
+                    Aucuns D.A. disponible
+                </option>
+                <option value="" th:unless="${#lists.isEmpty(availableVending)}">
+                    Choisissez une machine
+                </option>
+                <option th:unless="${#lists.isEmpty(availableVending)}"
+                        th:each="vending : ${availableVending}"
+                        th:value="${vending.id}"
+                        th:text="${vnding.brand + ' - ' + vending.model}">
+                </option>
             </select>
-            <label for="vendings">Les distributeurs</label>
+            <label for="vending">Les distributeurs</label>
         </div>
         <div class="elements">
             <input type="text"
                    class=""
-                   id="vending_name"
-                   name="field_vending_name"
+                   id="name"
+                   name="name"
                    required="required">
-            <label for="vending_name">Attribuer un nom</label>
+            <label for="name">Attribuer un nom</label>
         </div>
     </fieldset>
 

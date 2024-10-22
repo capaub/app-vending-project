@@ -1,0 +1,30 @@
+<main class="Container_main Main">
+
+    <h1 class="Main_title">Machines</h1>
+
+    <button class="btn_add_vending" data-text="Ajouter une machine"></button>
+    <button class="btn_back_add_batch_vending_to_vendingList hidden" data-text="Retour"></button>
+    <button class="btn_back_to_vendingList hidden" data-text="Retour"></button>
+    <button class="btn_back_new_vending_to_vendingList hidden" data-text="Retour"></button>
+
+    <section class="list_container vending_list_container">
+        <div th:replace="~{fragments/_vendings}"></div>
+    </section>
+
+    <section class="vendingGrid hidden">
+        <div th:replace="~{fragments/vendingId}"></div>
+    </section>
+
+    <div class="container_new_vending_form hidden">
+        <div th:replace="~{fragments/_addVending}"></div>
+    </div>
+
+    <div class="container_add_batch_form hidden">
+        <div th:replace="~{fragments/_addBatchesToVending}"></div>
+    </div>
+
+    <script type="module" th:src="@{/js/newVending.js}"></script>
+    <script type="module" th:src="@{/js/showVending.js}"></script>
+    <script type="module" th:src="@{/js/addBatchToVending.js}"></script>
+
+</main>

@@ -3,13 +3,16 @@ package org.capaub.mswebapp.controller.ajax;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.CustomerService;
-import org.capaub.mswebapp.service.dto.CustomerDTO;
+import org.capaub.mswebapp.service.dto.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -17,11 +20,47 @@ import java.util.List;
 public class CustomerAjaxController {
     private final CustomerService customerService;
 
-    @GetMapping("/getAllCustomersByCompanyId")
-    public ModelAndView ajaxShowCustomers(HttpSession session) {
-        Integer companyId = (Integer) session.getAttribute("companyId");
-        List<CustomerDTO> customersDTO = customerService.getAllCustomersByCompanyId(companyId);
+    @GetMapping("/refreshCustomer/afterAddingVending/{customerId}")
+    public String ajaxShowCustomers(@PathVariable Integer customerId, Model model) {
+        CustomerDataVendingsDTO vendingsDataForCustomer = customerService.getVendingsByCustomer(customerId);
+        List<CustomerDTO> customers = new ArrayList<>();
+        customers.add(customerService.getCustomers(customerId));
 
-        return new ModelAndView("fragments/customers","customers", customersDTO);
+        model.addAttribute("customers", customers);
+        model.addAttribute("vendings", vendingsDataForCustomer.getVendingData());
+        model.addAttribute("status", vendingsDataForCustomer.getStatus());
+        model.addAttribute("customersStatus", vendingsDataForCustomer.getCustomersStatus());
+
+         return "fragments/_customers";
+    }
+
+    @PostMapping("/getAvailableVending")
+    public ResponseEntity<Map<String, List<VendingDTO>>> getAvailableVending(HttpSession session, Model model) {
+        Integer companyId = (Integer) session.getAttribute("companyId");
+        List<VendingDTO> availableVending = customerService.getAvailableVending(companyId);
+        Map<String, List<VendingDTO>> response = new HashMap<>();
+        response.put("availableVending",availableVending);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/addVendingToCustomer/{vendingId}/{customerId}/{vendingName}")
+    public String addVending(@PathVariable Integer vendingId,
+                                                          @PathVariable Integer customerId,
+                                                          @PathVariable String vendingName,
+                                                          Model model) {
+
+        List<CustomerDTO> customers = new ArrayList<>();
+        customers.add(customerService.getCustomers(customerId));
+
+        CustomerDataVendingsDTO customerDataVendingsDTO = customerService.addVending(vendingId,customerId,vendingName);
+
+        model.addAttribute("customers", customers);
+        model.addAttribute("vendings", customerDataVendingsDTO.getVendingData());
+        model.addAttribute("status", customerDataVendingsDTO.getStatus());
+        model.addAttribute("customersStatus", customerDataVendingsDTO.getCustomersStatus());
+
+        System.out.println(customers);
+
+        return "fragments/_customers";
     }
 }
