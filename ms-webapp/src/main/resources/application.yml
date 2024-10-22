@@ -11,6 +11,11 @@ spring:
     url: jdbc:mysql://localhost:3306/vendo
     username: root
     password: ACDS
+logging:
+  level:
+    feign: DEBUG
+    org.capaub.mswebapp.service.client.VendingPHPClient: DEBUG  # Remplace avec le package du client Feign
+    org.springframework.cloud.openfeign: DEBUG
 
 eureka:
   instance:
@@ -25,4 +30,4 @@ server:
   servlet:
     session:
       timeout: 30m
-  port: 8083
+  port: 8084
