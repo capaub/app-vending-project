@@ -24,7 +24,7 @@
         <div class="elements">
             <select name="authorities"
                     id="authorities">
-                <option th:each="role : ${roles}"
+                <option th:each="role : ${authorities}"
                         th:value="${role.id}"
                         th:text="${role.label}"></option>
             </select>

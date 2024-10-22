@@ -38,8 +38,8 @@
         <p class="text connected_at_time" th:text="${#dates.format(user.connectedAt, 'HH:mm:ss')}"></p>
     </div>
     <div th:unless="${user.connectedAt != null}">
-        <p class="text">aucune</p>
-        <p class="text">connexion</p>
+        <p class="text connected_at_date" th:text="aucune"></p>
+        <p class="text connected_at_time" th:text="connexion"></p>
     </div>
 
     <div class="buttons_actions_container">

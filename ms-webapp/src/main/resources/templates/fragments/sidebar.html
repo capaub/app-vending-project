@@ -1,5 +1,3 @@
-
-
 <aside class="Container_sidebar Sidebar" th:fragment="sidebar">
     <nav class="Sidebar_links" th:classappend="${(#strings.endsWith(request.requestURI, '/signIn')
                         or #strings.endsWith(request.requestURI, '/signUp')) ? 'hidden' : ''}">
@@ -8,7 +6,7 @@
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/customers' ? '' : 'selected'}">Clients</a>
 
-        <a th:href="@{/vendings}"
+        <a th:href="@{/vendings/getAllVending}"
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/vendings' ? '' : 'selected'}">Machines</a>
         <a th:href="@{/products/stock}"

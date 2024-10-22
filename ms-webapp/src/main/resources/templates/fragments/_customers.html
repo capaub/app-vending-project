@@ -2,28 +2,33 @@
          th:fragment="_customers"
          th:each="customer : ${customers}"
          th:data-customer-id="${customer.id}"
-         th:data-company-name="${customer.companyName}">
+         th:data-company-name="${customer.companyName}"
+         th:classappend="${customersStatus != null and customersStatus.containsKey(customer.id.toString) ? customersStatus[customer.id.toString] : ''}">
     <h3 class="Customer_name"
+        data-text="Attribuer une machine"
         th:text="${#strings.toUpperCase(customer.companyName)}">
         <span>infos</span>
     </h3>
 
     <div class="Customer_container">
         <div class="Customer_container_vendings"
-             th:classappend="${customerStatus[customer.id] != null ? customerStatus[customer.id] : ''}"
-             th:if="${vending[customer.id] != null}">
+             th:if="${vendings[customer.id.toString()] != null}"
+             th:classappend="${customersStatus != null and customersStatus[customer.id.toString()] != null ? customersStatus[customer.id.toString()] : ''}">
+
             <div class="Customer_vendings_vending Vending"
-                 th:each="vending : ${vendings[customer.id]}"
-                 th:classappend="${status[vending.id] != null} ? ${status[vending.id]} : ''"
-                 th:data-vending-id="${vending.id}">
+                 th:each="entry : ${vendings[customer.id.toString()]}"
+                 th:classappend="${status != null and status[entry.key] != null ? status[entry.key] : ''}"
+                 th:data-vending-id="${entry.key}">
+
                 <img class="Vending_img" th:src="@{/img/vending/vending.svg}"
-                     alt="illustratoin d'un distributeur automatique">
+                     alt="illustration d'un distributeur automatique">
+
                 <div class="Vending_footer">
-                    <p class="Vending_footer_name"
-                       th:text="${vending.name}"></p>
+                    <p class="Vending_footer_name" th:text="${entry.value.name}"></p>
                 </div>
             </div>
         </div>
+
 
         <div class="Customer_container_infos">
             <div class="Customer_container_infos_contact">
