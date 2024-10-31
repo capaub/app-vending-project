@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.SessionService;
 import org.capaub.mswebapp.service.VendingService;
 import org.capaub.mswebapp.service.dto.VendingDTO;
+import org.capaub.mswebapp.service.dto.VendingMongoDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class VendingController {
     @GetMapping("/getAllVending")
     public ModelAndView getAllVending(Model model) {
         Integer companyId = sessionService.getCompanyId();
-        List<VendingDTO> allVending = vendingService.getAllVending(companyId);
+        List<VendingMongoDTO> allVending = vendingService.getAllVending(companyId);
 
         model.addAttribute("fragmentPath","fragments/vendings");
 

@@ -1,0 +1,35 @@
+<main class="Container_main Main">
+
+    <h1 class="Main_title">Vending</h1>
+
+    <button class="btn_add_vending hidden" data-text="Ajouter une machine"></button>
+    <button class="btn_back_add_batch_vending_to_vendingList hidden" data-text="Retour"></button>
+    <button class="btn_back_new_vending_to_vendingList hidden" data-text="Retour"></button>
+
+    <section class="vendingGrid">
+
+        <ul th:if="${dataVendingBuild != null}"
+            th:each="i : ${#numbers.sequence(1, dataVendingBuild.nbVendingTray)}" class="plateau">
+            <li th:each="j : ${#numbers.sequence(1, dataVendingBuild.nbVendingSpiral)}" class="spiral"
+                th:with="key = ${NUM_TO_ALPHA.get(i) + j}"
+                th:data-product-barcode="${dataVendingBuild.dataVendingStock.get(key) != null ? dataVendingBuild.dataVendingStock.get(key).barcode : ''}">
+
+                <div class="batch_picture"></div>
+
+                <p class="location_identifier"
+                   th:data-vending="${dataVendingBuild.vendingTags != null ? dataVendingBuild.vendingTags : ''}"
+                   th:data-vending-id="${dataVendingBuild.vendingId}"
+                   th:text="${key}"></p>
+            </li>
+        </ul>
+
+        <div th:text="${dataVendingBuild.dataVendingStock}" hidden="hidden"></div>
+    </section>
+
+    <section class="container_add_batch_form hidden">
+        <div th:replace="~{fragments/_addBatchesToVending}"></div>
+    </section>
+
+    <script type="module" th:src="@{/js/showVending.js}"></script>
+    <script type="module" th:src="@{/js/addBatchToVending.js}"></script>
+</main>

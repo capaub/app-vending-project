@@ -21,8 +21,8 @@
                 </option>
                 <option th:unless="${#lists.isEmpty(availableVending)}"
                         th:each="vending : ${availableVending}"
-                        th:value="${vending.id}"
-                        th:text="${vnding.brand + ' - ' + vending.model}">
+                        th:value="${vending.vendingId}"
+                        th:text="${vending.brand + ' - ' + vending.model}">
                 </option>
             </select>
             <label for="vending">Les distributeurs</label>

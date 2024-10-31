@@ -13,7 +13,7 @@
 
 <ul th:unless="${#lists.isEmpty(vendings)}"
     th:each="vending : ${vendings}"
-    th:data-vending-id="${vending.id}"
+    th:data-vending-id="${vending.vendingId}"
     class="grid_container vending">
     <li th:data-brand="${vending.brand}" th:text="${vending.brand}"></li>
     <li th:data-model="${vending.model}" th:text="${vending.model}"></li>

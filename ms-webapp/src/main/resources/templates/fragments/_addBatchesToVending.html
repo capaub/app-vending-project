@@ -1,0 +1,49 @@
+<form method="POST"
+      class="add_batch_form form_container"
+      th:data-vending-id="${vendingId}">
+
+    <button class="close closeAddVendingForm">X</button>
+
+    <fieldset th:data-vending-tags="${vendingTags}" class="fieldset">
+
+        <div class="elements" th:if="${#lists.isEmpty(batches)}">
+            <select name="field_no_batch" id="noBatch" required="required">
+                <option>aucuns lots disponible</option>
+            </select>
+            <label for="batch">Produits</label>
+        </div>
+
+        <div class="elements" th:unless="${#lists.isEmpty(batches)}">
+            <select name="field_batch" id="batch" required="required">
+                <option th:each="batch : ${batches}"
+                        th:value="${batch.id}"
+                        th:text="${batch.brand}"
+                        th:selected="${batch.id == 1}">
+                </option>
+
+            </select>
+            <label for="batch">Produits</label>
+        </div>
+
+        <div class="elements">
+            <input type="number"
+                   name="field_quantity"
+                   id="quantity"
+                   required="required">
+            <label for="quantity">Quantité</label>
+        </div>
+
+        <div class="elements">
+            <input type="text"
+                   name="field_location"
+                   id="location"
+                   th:value="${location}"
+                   readonly>
+            <label for="location">Emplacement</label>
+        </div>
+
+    </fieldset>
+
+    <input type="submit" class="add_batch_submit">
+
+</form>

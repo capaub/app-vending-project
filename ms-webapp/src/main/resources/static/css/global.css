@@ -226,7 +226,7 @@ button.close {
   z-index: 2;
   right: 10%;
   position: fixed;
-  top: 20%;
+  top: 35%;
   background-color: #4E7EAC;
   font-size: 1em;
   text-transform: uppercase;
@@ -452,7 +452,7 @@ select + label, input[type=date] + label, #location + label {
 
 .vendingGrid {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgb(255, 255, 255);
   border-radius: 0.5em;
   padding: 2em 5em 7em 2em;
   border: solid;
@@ -576,11 +576,11 @@ ul {
   width: 100%;
   position: fixed;
   z-index: 10;
-  background-image: url("../img/backgroundHeader.jpg");
+  background-image: url("../img/snacking.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 100px;
+  height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -679,7 +679,7 @@ ul {
   background: #24476B;
   min-height: 100vh;
   display: grid;
-  padding-top: 8em;
+  padding-top: 8.6em;
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .Container {
@@ -703,6 +703,7 @@ ul {
 }
 .Sidebar_links {
   display: grid;
+  column-gap: 0.5em;
 }
 .Sidebar_links_link:any-link {
   transition: 0.3s ease-in-out;
@@ -719,19 +720,22 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.35);
   z-index: -1;
+  border-radius: 1em 1em 0 0;
 }
 .Sidebar_links_link:any-link.selected {
   text-decoration: underline;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1em 1em 0 0;
 }
 .Sidebar_links_link:any-link:active {
   box-shadow: none;
 }
 .Sidebar_links_link:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1em 1em 0 0;
 }
 .Sidebar_links_link_user {
   height: 30px;
@@ -1326,6 +1330,12 @@ h4 {
 .company_name {
   font-weight: bold;
   font-size: 2em;
+}
+
+.chartContainer {
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
 }
 
 /*# sourceMappingURL=global.css.map */
