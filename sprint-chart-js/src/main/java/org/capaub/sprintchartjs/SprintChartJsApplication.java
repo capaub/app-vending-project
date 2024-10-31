@@ -11,5 +11,4 @@ public class SprintChartJsApplication {
     public static void main(String[] args) {
         SpringApplication.run(SprintChartJsApplication.class, args);
     }
-
 }

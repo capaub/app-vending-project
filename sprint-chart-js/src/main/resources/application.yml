@@ -3,12 +3,12 @@ spring:
     name: sprint-chart-js
   jackson:
     serialization:
-      fail-on-empty-beans: false # permet d'outre passer les champs vide lors de la sérialization Hibernate -> Json
+      fail-on-empty-beans: false
   config:
     import: optional:configserver:http://localhost:9090/
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/vendo
