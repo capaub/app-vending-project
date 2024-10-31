@@ -22,14 +22,14 @@
            name="email"
            disabled>
     <select class="input-form select"
-            th:value="${user.authorities}"
+            th:value="${user.authorities.get(0)}"
             id="authorities"
             name="authorities"
             disabled>
             <option th:each="role : ${authorities}"
                     th:value="${role.id}"
                     th:text="${role.label}"
-                    th:selected="${role.id} == ${user.authorities}">
+                    th:selected="${role.id} == ${user.authorities.get(0)}">
             </option>
     </select>
 

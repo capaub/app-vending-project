@@ -48,7 +48,7 @@ public class AppUserController {
                 new AppRoleDTO("STOCKER","approvisionneur"),
                 new AppRoleDTO("USER","utilisateur")
         );
-        model.addAttribute("authorities",roleList);
+        model.addAttribute("authorities", roleList);
         model.addAttribute("fragmentPath","fragments/users");
 
         return new ModelAndView("index","users", usersDTO);

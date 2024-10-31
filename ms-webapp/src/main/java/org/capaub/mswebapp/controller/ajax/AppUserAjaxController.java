@@ -33,7 +33,7 @@ public class AppUserAjaxController {
                 new AppRoleDTO("USER","utilisateur")
         );
 
-        model.addAttribute("roles",roleList);
+        model.addAttribute("authorities", roleList);
 
         return new ModelAndView("fragments/_users","users", usersDTO);
     }
