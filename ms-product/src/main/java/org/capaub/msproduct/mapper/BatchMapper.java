@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 public interface BatchMapper {
     @Mapping(source = "goods.id", target = "goodsId")
     BatchDTO batchToBatchDTO(Batch batch);
+
     @Mapping(source = "goodsId", target = "goods.id")
     Batch batchDTOToBatch(BatchDTO batchDTO);
 }

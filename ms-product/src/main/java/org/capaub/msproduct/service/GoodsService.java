@@ -47,5 +47,4 @@ public class GoodsService {
                 .map(goodsMapper::toGoodsDTO)
                 .collect(Collectors.toList());
     }
-
 }

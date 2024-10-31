@@ -23,14 +23,11 @@ public class CustomerService {
     private final CustomerWithAddressMapper customerWithAddressMapper;
     private final CustomerMapper customerMapper;
 
-    // Méthode pour ajouter un nouveau client avec vérification
     public CustomerDTO createCustomer(CustomerWithAddressToSaveDTO customerWithAddressToSaveDTO) {
-        // Vérification de l'existence par SIRET
         if (customerRepository.findBySiret(customerWithAddressToSaveDTO.getSiret()).isPresent()) {
             throw new IllegalArgumentException("Un client avec ce SIRET existe déjà.");
         }
 
-        // Vérification de l'existence de la company
         if (companyClient.getCompanyById(customerWithAddressToSaveDTO.getCompanyId()) == null){
             throw new IllegalArgumentException("Company introuvable.");
         }

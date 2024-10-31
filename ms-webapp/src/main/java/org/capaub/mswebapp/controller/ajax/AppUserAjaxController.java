@@ -32,6 +32,7 @@ public class AppUserAjaxController {
                 new AppRoleDTO("STOCKER","approvisionneur"),
                 new AppRoleDTO("USER","utilisateur")
         );
+
         model.addAttribute("roles",roleList);
 
         return new ModelAndView("fragments/_users","users", usersDTO);
@@ -48,5 +49,4 @@ public class AppUserAjaxController {
         appUserService.deleteUser(id);
 
     }
-
 }

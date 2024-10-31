@@ -1,20 +1,22 @@
 package org.capaub.msproduct.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.capaub.msproduct.entity.Batch;
+import org.capaub.msproduct.repository.BatchRepository;
 import org.capaub.msproduct.service.dto.BatchDTO;
 import org.capaub.msproduct.service.dto.BatchInfoDTO;
 import org.capaub.msproduct.service.dto.GoodsDTO;
 import org.capaub.msproduct.service.dto.GoodsWithBatchesInfoDTO;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class StockService {
-    private GoodsService goodsService;
+    private final BatchRepository batchRepository;
 
     public Map<String, GoodsWithBatchesInfoDTO> constructBatchInfo(List<BatchDTO> batchDTOList, List<GoodsDTO> goodsDTOList) {
         Map<String, GoodsWithBatchesInfoDTO> stockInfo = new HashMap<>();
@@ -35,37 +37,29 @@ public class StockService {
                         return batchInfo;
                     }).collect(Collectors.toList());
 
-            // Créer le GoodsWithBatchesInfoDTO
             GoodsWithBatchesInfoDTO goodsWithBatches = new GoodsWithBatchesInfoDTO();
             goodsWithBatches.setBrand(goodsDTO.getBrand());
             goodsWithBatches.setImgPath(goodsDTO.getImgUrl());
             goodsWithBatches.setBatches(batchesForGoods);
 
-            // Ajouter au stockInfo map avec le barcode comme clé
             stockInfo.put(goodsDTO.getBarcode(), goodsWithBatches);
 
         }
         return stockInfo;
     }
 
-    private BatchInfoDTO createBatchInfoDTO(BatchDTO batch) {
-        BatchInfoDTO batchInfo = new BatchInfoDTO();
-        batchInfo.setDlc(formatDate(batch.getDlc()));
-        batchInfo.setQrCodePath(batch.getQrCodePath());
-        batchInfo.setQuantity(batch.getQuantity());
-        batchInfo.setCreatedAt(formatDate(batch.getCreatedAt()));
-        batchInfo.setUpdatedAtDate(batch.getUpdatedAt() != null ? formatDate(batch.getUpdatedAt()) : "");
-        batchInfo.setUpdatedAtTime(batch.getUpdatedAt() != null ? formatTime(batch.getUpdatedAt()) : "");
-        batchInfo.setSoldOutAt(batch.getSoldOutAt() != null ? formatDate(batch.getSoldOutAt()) : "");
+    public Boolean checkAvailableQuantity(Integer batchId, Integer quantityToCheck) {
+        Batch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new EntityNotFoundException("Batch not found with ID: " + batchId));
 
-        return batchInfo;
+        Integer quantity = batch.getQuantity();
+        return quantity >= quantityToCheck;
     }
 
-    private String formatDate(Date date) {
-        return new SimpleDateFormat("dd-MM-yyyy").format(date);
-    }
-
-    private String formatTime(Date date) {
-        return new SimpleDateFormat("HH:mm:ss").format(date);
+    public void decreaseQuantity(Integer batchId, Integer quantityToReduce) {
+        Batch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new EntityNotFoundException("Batch not found with ID: " + batchId));
+        batch.setQuantity(batch.getQuantity() - quantityToReduce);
+        batchRepository.save(batch);
     }
 }

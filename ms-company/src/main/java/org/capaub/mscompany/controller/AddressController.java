@@ -33,6 +33,4 @@ public class AddressController {
         List<AddressDTO> Addresses = addressService.getAllAddressesByCompanyId(companyId);
         return ResponseEntity.ok(Addresses);
     }
-
-    // autres endpoints...
 }

@@ -6,12 +6,12 @@ import org.capaub.mswebapp.service.AppUserService;
 import org.capaub.mswebapp.service.dto.AppRoleDTO;
 import org.capaub.mswebapp.service.dto.AppUserDTO;
 import org.capaub.mswebapp.service.dto.CompleteRegistrationDTO;
-import org.capaub.mswebapp.service.dto.CustomerDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -53,4 +53,18 @@ public class AppUserController {
 
         return new ModelAndView("index","users", usersDTO);
     }
+
+    @GetMapping("/createPassword")
+    public ModelAndView showPasswordSetupPage(@RequestParam("username") String username, Model model) {
+        model.addAttribute("username", username);
+        return new ModelAndView("createPassword");
+    }
+
+    @PostMapping("/password-setup")
+    public String setPassword(@RequestParam("username") String username,
+                              @RequestParam("password") String password) {
+        appUserService.updatePassword(username, password);
+        return "redirect:/signIn?passwordSet";
+    }
+
 }

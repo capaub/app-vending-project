@@ -1,6 +1,5 @@
 package org.capaub.mscompany.service.dto;
 
-import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;

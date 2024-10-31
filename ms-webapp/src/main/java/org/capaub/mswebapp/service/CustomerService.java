@@ -26,7 +26,7 @@ public class CustomerService {
         return customerClient.createCustomer(customerDTO);
     }
 
-    public List<VendingDTO> getAvailableVending(Integer companyId) {
+    public List<VendingMongoDTO> getAvailableVending(Integer companyId) {
         return vendingService.findAvailableVending(companyId);
     }
 
@@ -44,7 +44,7 @@ public class CustomerService {
         return vendingService.getVendingDataByCustomerList(customerIdToList);
     }
 
-    public CustomerDataVendingsDTO addVending(Integer vendingId, Integer customerId, String vendingName) {
+    public CustomerDataVendingsDTO addVending(String vendingId, Integer customerId, String vendingName) {
 
         return vendingService.addVendingToCustomer(vendingId,customerId,vendingName);
     }

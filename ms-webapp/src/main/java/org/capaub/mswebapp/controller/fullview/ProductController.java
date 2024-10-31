@@ -9,10 +9,7 @@ import org.capaub.mswebapp.service.dto.GoodsDTO;
 import org.capaub.mswebapp.service.dto.GoodsWithBatchesInfoDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -28,13 +25,21 @@ public class ProductController {
     private final SessionService sessionService;
 
     @GetMapping("/stock")
-    public ModelAndView getProductsForCompany(Model model) {
+    public ModelAndView getProductsForCompany(
+            @RequestParam(value = "fromCreateBatch", required = false) Boolean fromCreateBatch,
+            Model model) {
+
         Integer companyId = sessionService.getCompanyId();
 
         Map<String, GoodsWithBatchesInfoDTO> products = productClient.getProductsForCompany(companyId);
 
-        model.addAttribute("fragmentPath","fragments/stock");
         model.addAttribute("companyId", companyId);
+
+        if (Boolean.TRUE.equals(fromCreateBatch)) {
+            return new ModelAndView("fragments/stock", "products", products);
+        }
+
+        model.addAttribute("fragmentPath","fragments/stock");
 
         return new ModelAndView("index","products", products);
     }
@@ -45,7 +50,6 @@ public class ProductController {
         productClient.createBatch(batchDTO, companyId);
         GoodsDTO goodsDTO = productClient.getGoods(batchDTO.getBarcode(), companyId);
         imageServerService.saveImage(goodsDTO);
-        return "redirect:/products/stock";
+        return "redirect:/products/stock?fromCreateBatch=true";
     }
-
 }

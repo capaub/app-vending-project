@@ -43,7 +43,4 @@ public class AddressService {
                 .map(addressMapper::toAddressDTO)
                 .collect(Collectors.toList());
     }
-
-
-    // autres méthodes...
 }

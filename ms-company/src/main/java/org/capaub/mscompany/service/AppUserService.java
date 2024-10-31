@@ -1,7 +1,6 @@
 package org.capaub.mscompany.service;
 
 import lombok.AllArgsConstructor;
-import org.capaub.mscompany.entity.AppRole;
 import org.capaub.mscompany.entity.AppUser;
 import org.capaub.mscompany.entity.Company;
 import org.capaub.mscompany.mapper.AppUserMapper;
@@ -12,7 +11,6 @@ import org.capaub.mscompany.service.dto.AppUserDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;

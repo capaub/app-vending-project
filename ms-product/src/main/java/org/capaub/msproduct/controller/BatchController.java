@@ -20,9 +20,9 @@ public class BatchController {
         return batchService.createBatch(batchDTO, companyId);
     }
 
-    @GetMapping("/get/{id}")
-    public BatchDTO getBatch(@PathVariable Integer id) {
-        return batchService.findBatch(id);
+    @GetMapping("/get/{batchId}")
+    public BatchDTO getBatch(@PathVariable Integer batchId) {
+        return batchService.findBatch(batchId);
     }
 
     @GetMapping("/allByCompanyId/{companyId}")
@@ -30,4 +30,8 @@ public class BatchController {
         return batchService.getAllBatchesByCompanyId(companyId);
     }
 
+    @GetMapping("/getAllFiltered/{companyId}")
+    public List<BatchDTO> getAllFilteredByCompanyId(@PathVariable Integer companyId) {
+        return batchService.getAllFilteredByCompanyId(companyId);
+    }
 }

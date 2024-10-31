@@ -31,5 +31,4 @@ public class CompanyController {
         Company company = companyService.getCompanyBySiret(siret);
         return ResponseEntity.ok(company);
     }
-
 }

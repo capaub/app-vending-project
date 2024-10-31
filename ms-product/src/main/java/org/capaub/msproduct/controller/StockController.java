@@ -8,10 +8,7 @@ import org.capaub.msproduct.service.dto.BatchDTO;
 import org.capaub.msproduct.service.dto.GoodsDTO;
 import org.capaub.msproduct.service.dto.GoodsWithBatchesInfoDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,12 +21,21 @@ public class StockController {
     private GoodsService goodsService;
     private StockService stockService;
 
-
     @GetMapping("/batchesInfo/{companyId}")
     public ResponseEntity<Map<String, GoodsWithBatchesInfoDTO>> getStockInfo(@PathVariable Integer companyId) {
         List<BatchDTO> batchesDTO = batchService.getAllBatchesByCompanyId(companyId);
         List<GoodsDTO> goodsDTOList = goodsService.getAllGoods();
         Map<String, GoodsWithBatchesInfoDTO> stockInfo = stockService.constructBatchInfo(batchesDTO,goodsDTOList);
         return ResponseEntity.ok(stockInfo);
+    }
+
+    @GetMapping("/checkAvailableQuantity/{batchId}/{quantity}")
+    public Boolean checkAvailableQuantity(@PathVariable Integer batchId, @PathVariable Integer quantity) {
+        return stockService.checkAvailableQuantity(batchId,quantity);
+    }
+
+    @PostMapping("/decreaseQuantity/{batchId}/{quantityToReduce}")
+    public void decreaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToReduce) {
+        stockService.decreaseQuantity(batchId,quantityToReduce);
     }
 }

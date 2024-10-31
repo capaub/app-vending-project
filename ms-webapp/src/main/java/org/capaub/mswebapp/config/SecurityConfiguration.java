@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.AuthenticationService;
+import org.capaub.mswebapp.service.CustomAuthenticationFailureHandler;
 import org.capaub.mswebapp.service.SessionService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,40 +35,43 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-   @Bean
-   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-       return http
-               .authorizeHttpRequests(auth -> auth
-                       .requestMatchers(
-                               "/css/global.css",
-                               "/js/global.js",
-                               "/img/newLogo.svg",
-                               "/img/backgroundHeader.jpg",
-                               "/signUp",
-                               "/signIn").permitAll()
-                       .requestMatchers("/admin/**").hasRole("ADMIN")
-                       .requestMatchers("/stocker/**").hasRole("STOCKER")
-                       .requestMatchers("/user/**").hasRole("USER")
-                       .anyRequest().authenticated()
-               )
-               .formLogin(form -> form
-                       .loginPage("/signIn")
-                       .permitAll()
-                       .usernameParameter("email")
-                       .defaultSuccessUrl("/index", true)
-                       .successHandler(new AuthenticationSuccessHandler() {
-                           @Override
-                           public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                               sessionService.sessionUser();
-                               response.sendRedirect("/index");
-                           }
-                       })
-               )
-               .logout(logout -> logout
-                       .logoutUrl("/logout")
-                       .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                       .permitAll()
-               )
-               .build();
-   }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/css/global.css",
+                                "/js/global.js",
+                                "/img/newLogo.svg",
+                                "/img/snacking.png",
+                                "/signUp",
+                                "/createPassword",
+                                "/signIn").permitAll()
+                        .requestMatchers("/uploads/**").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/stocker/**").hasRole("STOCKER")
+                        .requestMatchers("/user/**").hasRole("USER")
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/signIn")
+                        .permitAll()
+                        .usernameParameter("email")
+                        .defaultSuccessUrl("/index", true)
+                        .successHandler(new AuthenticationSuccessHandler() {
+                            @Override
+                            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                                sessionService.sessionUser();
+                                response.sendRedirect("/index");
+                            }
+                        })
+                        .failureHandler(new CustomAuthenticationFailureHandler())
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
+                        .permitAll()
+                )
+                .build();
+    }
 }

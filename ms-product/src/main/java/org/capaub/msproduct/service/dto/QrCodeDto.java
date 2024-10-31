@@ -8,9 +8,7 @@ import java.time.Instant;
 @AllArgsConstructor @NoArgsConstructor
 @Data
 public class QrCodeDto {
-
     private Integer batchId;
     private String filename;
     private Instant now = Instant.now();
-
 }

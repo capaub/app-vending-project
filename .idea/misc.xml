@@ -18,11 +18,13 @@
         <option value="$PROJECT_DIR$/ms-webapp/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server-vending-app/pom.xml" />
         <option value="$PROJECT_DIR$/ms-external-api/pom.xml" />
+        <option value="$PROJECT_DIR$/sprint-chart-js/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Company/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-vending/pom.xml" />
       </set>
     </option>
   </component>

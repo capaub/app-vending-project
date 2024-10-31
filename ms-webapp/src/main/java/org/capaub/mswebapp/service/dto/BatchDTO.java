@@ -4,9 +4,7 @@ import lombok.*;
 
 import java.util.Date;
 
-@Setter @Getter @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class BatchDTO {
     private Integer id;
     private Date dlc;

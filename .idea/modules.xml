@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/app-vending-project.iml" filepath="$PROJECT_DIR$/.idea/app-vending-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-customer/ms-customer.iml" filepath="$PROJECT_DIR$/ms-customer/ms-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-front.iml" filepath="$PROJECT_DIR$/ms-front.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sprint_chatJS/sprint_chatJS.iml" filepath="$PROJECT_DIR$/sprint_chatJS/sprint_chatJS.iml" />
     </modules>
   </component>
 </project>

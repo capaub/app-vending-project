@@ -2,7 +2,6 @@ package org.capaub.mscustomer.service.client;
 
 import org.capaub.mscustomer.service.DTO.AddressDTO;
 import org.capaub.mscustomer.service.DTO.CompanyDTO;
-import org.capaub.mscustomer.service.DTO.CustomerDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

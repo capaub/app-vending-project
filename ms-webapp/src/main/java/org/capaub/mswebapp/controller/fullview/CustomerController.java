@@ -58,7 +58,7 @@ public class CustomerController {
         boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 
         if (isAjax) {
-            return "redirect:/customers/ajax/getAllCustomersByCompanyId";
+            return "redirect:/customers/ajax/backToCustomers";
         }
         return "redirect:getAllCustomersByCompanyId";
     }

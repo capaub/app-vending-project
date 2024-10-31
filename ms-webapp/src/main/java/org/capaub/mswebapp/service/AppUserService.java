@@ -3,6 +3,7 @@ package org.capaub.mswebapp.service;
 import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.dto.*;
 import org.capaub.mswebapp.service.client.CompanyClient;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AppUserService {
 
+    private final PasswordEncoder passwordEncoder;
     private CompanyClient companyClient;
 
     public AppUserDTO completeRegistration(CompleteRegistrationDTO completeRegistrationDTO) {
@@ -62,5 +64,12 @@ public class AppUserService {
 
     public void deleteUser(Integer id) {
         companyClient.deleteUser(id);
+    }
+
+    public void updatePassword(String username, String password) {
+        String passwordEncoded = passwordEncoder.encode(password);
+        AppUserDTO user = companyClient.getUserByEmail(username);
+        user.setPassword(passwordEncoded);
+        companyClient.updateUser(user);
     }
 }

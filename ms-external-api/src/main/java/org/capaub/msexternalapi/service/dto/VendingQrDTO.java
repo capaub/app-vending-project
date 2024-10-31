@@ -18,5 +18,4 @@ public class VendingQrDTO {
     public String getFilename() {
         return this.vendingId + "_" + this.customerId + "_" + this.companyId;
     }
-
 }

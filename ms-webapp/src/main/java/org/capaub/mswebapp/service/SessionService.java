@@ -29,5 +29,4 @@ public class SessionService {
     public Integer getCompanyId() {
         return (Integer) session.getAttribute("companyId");
     }
-
 }

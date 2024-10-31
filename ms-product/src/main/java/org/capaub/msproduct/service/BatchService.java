@@ -41,13 +41,20 @@ public class BatchService {
     }
 
     public List<BatchDTO> getAllBatchesByCompanyId(Integer companyId) {
-        List<Batch> batches = batchRepository.findAllByGoods_CompanyId(companyId);
+        List<Batch> batches = batchRepository.findAllByGoods_CompanyIdOrderByDlcAsc(companyId);
         return batches.stream()
                 .map(batchMapper::batchToBatchDTO)
                 .collect(Collectors.toList());
     }
 
-    public BatchDTO findBatch(Integer id) {
-        return batchMapper.batchToBatchDTO(batchRepository.findById(id).get());
+    public BatchDTO findBatch(Integer batchId) {
+        return batchMapper.batchToBatchDTO(batchRepository.findById(batchId).get());
+    }
+
+    public List<BatchDTO> getAllFilteredByCompanyId(Integer companyId) {
+        List<Batch> filteredBatches = batchRepository.findShortestDlcBatchByCompany(companyId);
+        return filteredBatches.stream()
+                .map(batchMapper::batchToBatchDTO)
+                .collect(Collectors.toList());
     }
 }

@@ -6,7 +6,6 @@ import pl.coderion.model.ProductResponse;
 import pl.coderion.service.OpenFoodFactsWrapper;
 import pl.coderion.service.impl.OpenFoodFactsWrapperImpl;
 
-
 @Service
 public class OpenFoodFactApiService {
 

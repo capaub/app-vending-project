@@ -4,7 +4,6 @@ import org.capaub.mscompany.entity.Company;
 import org.capaub.mscompany.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CompanyService {
     private final CompanyRepository companyRepository;
@@ -33,5 +32,4 @@ public class CompanyService {
         }
         return companyRepository.findBySiret(siret).get();
     }
-
 }

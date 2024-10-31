@@ -4,10 +4,7 @@ import lombok.*;
 
 import java.util.Date;
 
-
-@Getter @Setter @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class CustomerDTO {
     private Integer id;
     private String siret;

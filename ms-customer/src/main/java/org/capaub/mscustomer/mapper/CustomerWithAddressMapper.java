@@ -14,6 +14,7 @@ public interface CustomerWithAddressMapper {
     @Mapping(source = "country", target = "country")
     @Mapping(source = "companyId", target = "companyId")
     AddressDTO toAddressDTO(CustomerWithAddressToSaveDTO customerWithAddressToSaveDTO);
+
     @Mapping(source = "siret", target = "siret")
     @Mapping(source = "companyName", target = "companyName")
     @Mapping(source = "email", target = "email")

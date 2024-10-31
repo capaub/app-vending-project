@@ -7,14 +7,10 @@ import lombok.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@Setter
-@Getter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class CustomerDataVendingsDTO {
     @JsonProperty("vending")
-    private Map<String, Map<String, VendingDTO>> vendingData = new HashMap<>();
+    private Map<String, Map<String, VendingMongoDTO>> vendingData = new HashMap<>();
 
     @JsonProperty("status")
     private Map<String, String> status = new HashMap<>();
@@ -23,7 +19,7 @@ public class CustomerDataVendingsDTO {
     private Map<String, String> customersStatus = new HashMap<>();
 
     @JsonAnySetter
-    public void addVendingData(String key, Map<String, VendingDTO> value) {
+    public void addVendingData(String key, Map<String, VendingMongoDTO> value) {
         if (!value.isEmpty()) {
             this.vendingData.put(key, value);
         }

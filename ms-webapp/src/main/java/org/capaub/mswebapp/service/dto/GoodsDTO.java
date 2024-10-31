@@ -4,9 +4,7 @@ import lombok.*;
 
 import java.util.Date;
 
-@Getter @Setter @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class GoodsDTO {
     private Integer id;
     private String barcode;

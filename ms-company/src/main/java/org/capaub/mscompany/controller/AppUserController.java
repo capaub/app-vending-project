@@ -57,7 +57,4 @@ public class AppUserController {
         List<AppUserDTO> appUser = appUserService.getAllUsersByCompanyId(companyId);
         return ResponseEntity.ok(appUser);
     }
-
-
-    // autres endpoints...
 }

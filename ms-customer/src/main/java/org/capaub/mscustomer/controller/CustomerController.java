@@ -36,5 +36,4 @@ public class CustomerController {
         List<Customer> customer = customerService.getAllCustomersByCompanyId(companyId);
         return ResponseEntity.ok(customer);
     }
-    // Autres endpoints avec les annotations @Valid et @RequestBody
 }
