@@ -889,6 +889,11 @@ h4 {
   }
 }
 
+.list_stock{
+  background-color: white;
+  margin-bottom: 17px;
+}
+
 //.addBatchToVending{
 //  top: 200px;
 //  position: fixed;
@@ -910,8 +915,85 @@ h4 {
 
 ////////////////////// CHART JS /////////////////
 
+.Container_chart_option button {
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #00A3E0;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 5px 0;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+.Container_chart_option_box{
+  width: 100%;
+}
+.Container_chart_option button:hover {
+  background-color: #00A3E0;
+  color: #ffffff;
+}
+
+.Container_chart_option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: #f0f0f0;
+  width: 200px;
+  border-right: 2px solid #00A3E0;
+}
+
+.charts_vendings_btn.active + .hidden {
+  display: block;
+}
+
+.charts_vendings_customer_btn, .charts_vendings_customer_vending_btn {
+  background-color: #ffffff;
+  color: #555;
+  border: 1px solid #00A3E0;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  margin: 5px 0;
+  width: 90%;
+}
+
+.charts_vendings_customer_btn:hover, .charts_vendings_customer_vending_btn:hover {
+  background-color: #00A3E0;
+  color: #ffffff;
+}
+
+.Container_chart_graph {
+  background-color: #faf5e6;
+  border-radius: 12px;
+  padding: 20px;
+  margin-left: 20px;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 .chartContainer{
   margin-right: auto;
   margin-left: auto;
   align-self: center;
+}
+
+
+//////////////////// ERROR /////////////////
+
+.containerError{
+    padding: 2em;
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    height: 200px;
+    margin-left: auto;
+    background-color: #ed7474;
+    margin-right: auto;
+    border-radius: 14px;
 }

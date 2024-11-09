@@ -12,9 +12,12 @@ $listBackgroundColor: #4E7EAC;
 $listChildEvenColor: #A7B2BD;
 
 ///////// FORM //////////
-$firstColorForm: rgba(255, 255, 255, 0.3);
-$boxShadowContainerForm: 20px 20px 40px -6px rgba(255, 255, 255, 0.3);
-$boxShadowInputForm: 4px 4px 60px rgba(0, 0, 0, .2);
+//$firstColorForm: rgba(255, 255, 255, 0.3);
+//$boxShadowContainerForm: 20px 20px 40px -6px rgba(255, 255, 255, 0.3);
+//$boxShadowInputForm: 4px 4px 60px rgba(0, 0, 0, .2);
+$firstColorForm: rgba(67, 181, 214, 0.4);
+$boxShadowContainerForm: 20px 20px 40px -6px rgba(0, 0, 0, 0.3);
+$boxShadowInputForm: 4px 4px 60px rgba(225, 225, 225, .2);
 
 /////// BUTTON ///////
 $saveButton: #66BB6A ;
@@ -25,22 +28,27 @@ $closeButton: #757575 ;
 
 
 $headerBackgroundColor: #A9A9A9;
-$mainBackgroundColor: #24476B;
+$mainBackgroundColor: #f4edde;
+//$mainBackgroundColor: #0000f4;
 
-
-$primaryTextColor: #F2F2F2;
-$blackTextColor: #131212;
+//$primaryTextColor: #F2F2F2;
+//$blackTextColor: #131212;
+$primaryTextColor: #000000;
+$blackTextColor: #ececec;
 
 
 $scaleFactor780px: 0.8;
 $scaleFactor630px: 0.6;
 
 
-$boxShadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+$boxShadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+//$boxShadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
 
 
-$boxShadowMenu: 0 6px 10px rgba(0, 0, 0, 0.3);
-$textShadowH1: 1px 1px 2px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.5);
+//$boxShadowMenu: 0 6px 10px rgba(0, 0, 0, 0.3);
+//$textShadowH1: 1px 1px 2px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.5);
+$boxShadowMenu: 0 6px 10px rgba(255, 255, 255, 0.3);
+$textShadowH1: 1px 1px 2px rgba(255, 255, 255, 0.3), 1px 1px 2px rgba(0, 0, 0, 0.5);
 $borderRadius: 3px;
 $gap: 5px;
 

@@ -42,7 +42,7 @@
     position: absolute;
     pointer-events: none;
     transition: all 0.3s ease-in-out;
-    color: $mainBackgroundColor;
+    color: $primaryTextColor;
     font-weight: 500;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
     top: 2em;
@@ -51,7 +51,10 @@
     width: 1.1em;
     white-space: nowrap;
   }
+  & input:-webkit-autofill{
+    background-color: $firstColorForm;
 
+  }
   & input,
   & textarea,
   & select {
@@ -64,7 +67,7 @@
     border: none;
     border-left: solid 1px $firstColorForm;
     border-top: solid 1px $firstColorForm;
-    color: $mainBackgroundColor;
+    color: $primaryTextColor;
     font-size: 0.8em;
 
     &.field_empty{
@@ -100,7 +103,7 @@ select:focus{
 }
 
 input[type=submit] {
-  color: $mainBackgroundColor;
+  color: $primaryTextColor;
   backdrop-filter: blur(5px);
   width: 150px;
   box-shadow: $boxShadow;
@@ -159,7 +162,7 @@ button {
   z-index: 2;
   right: 10%;
   position: fixed;
-  top: 23%;
+  top: 30%;
   background-color: #4E7EAC;
   font-size: 1em;
   text-transform: uppercase;
@@ -212,7 +215,7 @@ label {
   left: 1em;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-  color: $mainBackgroundColor;
+  color: $primaryTextColor;
   font-weight: 500;
   opacity: 0.7;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);

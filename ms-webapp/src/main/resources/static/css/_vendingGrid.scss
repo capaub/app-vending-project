@@ -31,6 +31,8 @@
     right: 4.7em;
     bottom: 6.7em;
     border: solid 1px;
+    background-color: white;
+    z-index: -1;
   }
   &::before{
     content: "";

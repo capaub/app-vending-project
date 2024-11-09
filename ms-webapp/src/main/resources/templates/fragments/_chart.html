@@ -1,0 +1,6 @@
+<div id="jsonData" th:text="${jsonData}" th:hidden="hidden"></div>
+<div class="chartContainer">
+    <canvas class="chartContainer_canvas" style="height:550px; width:550px" id="acquisitions"></canvas>
+</div>
+<script th:src="@{/chartJS/node_modules/chart.js/dist/chart.umd.js}"></script>
+<script type="module" th:src="@{/chartJS/src/acquisitions.js}"></script>

@@ -22,7 +22,7 @@
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/users' ? '' : 'selected'}">Utilisateurs</a>
 
-        <a th:href="@{/chartJS/ajax/globalStock/1}"
+        <a th:href="@{/chartJS/}"
            sec:authorize="hasRole('ROLE_ADMIN')"
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/chartStock' ? '' : 'selected'}">Charte</a>

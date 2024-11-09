@@ -1,0 +1,26 @@
+<div class="Container_chart_option">
+    <div class="Container_chart_option_box">
+        <button class="charts_vendings_btn">Vending</button>
+        <div class="hidden">
+            <button class="charts_vendings_customer_btn"
+                    th:each="customer : ${customers}"
+                    th:value="${customer.name}"
+                    th:data-customer-id="${customer.id}"></button>
+        </div>
+        <div class="hidden">
+            <button class="charts_vendings_customer_vending_btn"
+                    th:each="vending : ${vendins}"
+                    th:data-venidng-id="${vending.id}"
+                    th:value="${vending.name}"></button>
+        </div>
+    </div>
+
+    <div class="Container_chart_option_box">
+        <button class="charts_totalIn_btn">Stock interne</button>
+    </div>
+    <div class="Container_chart_option_box">
+        <button class="charts_totalOut_btn">Stock externe</button>
+    </div>
+
+</div>
+<div class="Container_chart_graph" th:insert="~{fragments/_chart}"></div>
