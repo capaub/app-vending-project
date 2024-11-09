@@ -10,18 +10,26 @@ public class StockVendingSagaOrchestrator {
     private final VendingService vendingService;
 
     public boolean executeStockVendingSaga(String location, String vendingId, Integer batchId, Integer quantity) {
+        boolean productChecked = false;
+        boolean quantityDecreased = false;
+        boolean batchAdded = false;
+
         try {
-            if (!productService.checkAvailability(batchId, quantity)) {
+            productChecked = productService.checkAvailability(batchId, quantity);
+            if (!productChecked) {
                 return false;
             }
 
             productService.decreaseQuantity(batchId, quantity);
+            quantityDecreased = true;
 
             vendingService.addBatchToVending(location, vendingId, batchId, quantity);
+            batchAdded = true;
 
             return true;
         } catch (Exception e) {
-            //TODO gestion de la compensation en cas d'echec
+            productService.increaseQuantity(batchId, quantity);
+            vendingService.cancelLastUpdateSpiralStock(vendingId);
             return false;
         }
     }

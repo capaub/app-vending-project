@@ -1,0 +1,22 @@
+<!-- resources/templates/error/500.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Erreur 404 - Ressource non trouvée</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header}"></div>
+
+<div class="Container">
+    <div  class="containerError">
+        <h1>Erreur 404 - Ressource non trouvée</h1>
+        <p>Oups ! Il semble que la page demandée soit introuvable.</p>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer}"></div>
+<script type="module" th:src="@{/js/global.js}"></script>
+</body>
+</html>

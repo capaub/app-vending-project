@@ -62,4 +62,11 @@ public class StockService {
         batch.setQuantity(batch.getQuantity() - quantityToReduce);
         batchRepository.save(batch);
     }
+
+    public void increaseQuantity(Integer batchId, Integer quantityToAdd) {
+        Batch batch= batchRepository.findById(batchId)
+                .orElseThrow(() -> new EntityNotFoundException("Batch not found with ID: " + batchId));
+        batch.setQuantity(batch.getQuantity() + quantityToAdd);
+        batchRepository.save(batch);
+    }
 }

@@ -38,4 +38,9 @@ public class StockController {
     public void decreaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToReduce) {
         stockService.decreaseQuantity(batchId,quantityToReduce);
     }
+
+    @PostMapping("/increaseQuantity/{batchId}/{quantityToAdd}")
+    public void increaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToAdd) {
+        stockService.increaseQuantity(batchId,quantityToAdd);
+    }
 }

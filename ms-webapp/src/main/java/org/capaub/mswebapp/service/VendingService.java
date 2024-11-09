@@ -46,4 +46,8 @@ public class VendingService {
                                   Integer quantity) {
         vendingPHPClient.addBatchToVending(location, vendingId, batchId, quantity);
     }
+
+    public void cancelLastUpdateSpiralStock(String vendingId) {
+        vendingPHPClient.cancelLastUpdatedSpiralStock(vendingId);
+    }
 }

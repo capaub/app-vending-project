@@ -53,4 +53,9 @@ public class ProductService {
     public void decreaseQuantity(Integer batchId, Integer quantityToReduce) {
         productClient.decreaseQuantity(batchId, quantityToReduce);
     }
+
+    public void increaseQuantity(Integer batchId, Integer quantityToAdd) {
+        productClient.increaseQuantity(batchId, quantityToAdd);
+
+    }
 }

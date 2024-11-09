@@ -21,7 +21,10 @@ public interface ProductClient {
     Boolean checkAvailableQuantity(@PathVariable Integer batchId, @PathVariable Integer quantity);
 
     @RequestMapping(method = RequestMethod.POST, value = "/api/products/decreaseQuantity/{batchId}/{quantityToReduce}", consumes = "application/json")
-    Boolean decreaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToReduce);
+    void decreaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToReduce);
+
+    @RequestMapping(method = RequestMethod.POST,value = "/api/products/increaseQuantity/{batchId}/{quantityToAdd }", consumes = "application/json")
+    void increaseQuantity(@PathVariable Integer batchId, @PathVariable Integer quantityToAdd);
 
     @RequestMapping(method = RequestMethod.POST, value = "/api/batches/create/{companyId}", consumes = "application/json")
     BatchDTO createBatch(@RequestBody BatchDTO batchDTO, @PathVariable Integer companyId);
@@ -37,4 +40,5 @@ public interface ProductClient {
 
     @RequestMapping(method = RequestMethod.GET,value = "/api/goods/findByBarcode/{barcode}/{companyId}", consumes = "application/json")
     GoodsDTO getGoods(@PathVariable String barcode, @PathVariable Integer companyId);
+
 }
