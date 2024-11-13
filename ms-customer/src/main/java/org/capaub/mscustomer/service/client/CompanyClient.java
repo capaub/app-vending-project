@@ -15,6 +15,7 @@ public interface CompanyClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/api/addresses/create", consumes = "application/json")
     AddressDTO createAddress(@RequestBody AddressDTO addressDTO);
+
     @RequestMapping(method = RequestMethod.GET, value = "/api/addresses/getAddressById/{id}",consumes = "application/json")
     AddressDTO getAddressById(@PathVariable("id") Integer id);
 }

@@ -22,10 +22,10 @@
            class="Sidebar_links_link"
            th:classappend="${fragmentPath != 'fragments/users' ? '' : 'selected'}">Utilisateurs</a>
 
-        <a th:href="@{/chartJS/}"
+        <a th:href="@{/chartJS/globalStockIn}"
            sec:authorize="hasRole('ROLE_ADMIN')"
            class="Sidebar_links_link"
-           th:classappend="${fragmentPath != 'fragments/chartStock' ? '' : 'selected'}">Charte</a>
+           th:classappend="${fragmentPath != 'fragments/chart' ? '' : 'selected'}">Charte</a>
 
         <a th:href="@{/logout}" sec:authorize="isAuthenticated()" class="Sidebar_links_link">Deconnexion</a>
 

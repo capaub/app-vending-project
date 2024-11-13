@@ -12,4 +12,7 @@ public interface ChartJsClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/data/stockOut/{companyId}", consumes = "application/json")
     String getChartDataStockOut(@PathVariable("companyId") Integer companyId);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/data/vendingStock/{vendingId}", consumes = "application/json")
+    String getDataVendingStock(@PathVariable("vendingId") String vendingId);
 }

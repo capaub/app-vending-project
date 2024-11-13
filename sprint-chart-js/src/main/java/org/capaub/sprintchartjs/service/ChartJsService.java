@@ -36,4 +36,10 @@ public class ChartJsService {
         List<Map<String, Object>> stockOut = vendingPHPClient.getDataStockOut(companyId);
         return convertListMapToJson(stockOut);
     }
+
+    public String getDataVendingStock(String vendingId)
+    {
+        List<Map<String, Object>> vendingStock = vendingPHPClient.getDataVendingStock(vendingId);
+        return convertListMapToJson(vendingStock);
+    }
 }

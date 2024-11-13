@@ -20,6 +20,11 @@ public class ChartJsController {
 
     @GetMapping("/stockOut/{companyId}")
     public String getStockOut(@PathVariable Integer companyId) {
-        return chartJsService.getDataStockIn(companyId);
+        return chartJsService.getDataStockOut(companyId);
+    }
+
+    @GetMapping("/vendingStock/{vendingId}")
+    public String getVendingStock(@PathVariable String vendingId) {
+        return chartJsService.getDataVendingStock(vendingId);
     }
 }

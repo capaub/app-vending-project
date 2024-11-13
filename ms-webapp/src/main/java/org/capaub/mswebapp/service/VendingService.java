@@ -8,6 +8,7 @@ import org.capaub.mswebapp.service.dto.VendingMongoDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -49,5 +50,9 @@ public class VendingService {
 
     public void cancelLastUpdateSpiralStock(String vendingId) {
         vendingPHPClient.cancelLastUpdatedSpiralStock(vendingId);
+    }
+
+    public Map<String, String> getVendingsByCustomer(Integer customerId) {
+        return vendingPHPClient.vendingListByCustomerId(customerId);
     }
 }

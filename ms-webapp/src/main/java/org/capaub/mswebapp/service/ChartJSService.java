@@ -17,4 +17,8 @@ public class ChartJSService {
     public String getChartStockOut(Integer companyId) {
         return chartJsClient.getChartDataStockOut(companyId);
     }
+
+    public String getDataVendingStock(String vendingId) {
+        return chartJsClient.getDataVendingStock(vendingId);
+    }
 }

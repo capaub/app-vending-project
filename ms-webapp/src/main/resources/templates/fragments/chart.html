@@ -1,26 +1,32 @@
-<div class="Container_chart_option">
-    <div class="Container_chart_option_box">
-        <button class="charts_vendings_btn">Vending</button>
-        <div class="hidden">
-            <button class="charts_vendings_customer_btn"
-                    th:each="customer : ${customers}"
-                    th:value="${customer.name}"
-                    th:data-customer-id="${customer.id}"></button>
-        </div>
-        <div class="hidden">
-            <button class="charts_vendings_customer_vending_btn"
-                    th:each="vending : ${vendins}"
-                    th:data-venidng-id="${vending.id}"
-                    th:value="${vending.name}"></button>
-        </div>
-    </div>
+<div class="Container_chart">
+    <div class="Container_chart_option">
+        <div class="Container_chart_option_box">
+            <button class="charts_vendings_btn">Vending</button>
 
-    <div class="Container_chart_option_box">
-        <button class="charts_totalIn_btn">Stock interne</button>
-    </div>
-    <div class="Container_chart_option_box">
-        <button class="charts_totalOut_btn">Stock externe</button>
-    </div>
+            <div th:each="customer : ${customers}">
+                <button class="charts_vendings_customer_btn hidden"
+                        th:text="${customer.name}"
+                        th:data-customer-id="${customer.id}"></button>
 
+                <div class="vending-options hidden"
+                     th:if="${customer.vendings != null and !customer.vendings.isEmpty()}"
+                     th:each="vending : ${customer.vendings}">
+                    <button class="charts_vendings_customer_vending_btn"
+                            th:text="${vending.value}"
+                            th:data-vending-id="${vending.key}"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="Container_chart_option_box">
+            <button class="charts_totalIn_btn selected">Stock interne</button>
+        </div>
+        <div class="Container_chart_option_box">
+            <button class="charts_totalOut_btn">Stock externe</button>
+        </div>
+
+    </div>
+    <div class="Container_chart_graph" th:insert="~{fragments/_chart}"></div>
 </div>
-<div class="Container_chart_graph" th:insert="~{fragments/_chart}"></div>
+<script type="module" th:src="@{/js/chart/chartAction.js}"></script>

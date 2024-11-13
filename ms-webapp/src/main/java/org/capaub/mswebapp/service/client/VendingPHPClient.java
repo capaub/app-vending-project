@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Map;
 
 //@FeignClient(value = "vending-service", configuration = FeignConfig.class) //pour docker
 @FeignClient(name = "vending-service") //, url = "http://localhost:8000" pour contourner eureka
@@ -44,4 +45,6 @@ public interface VendingPHPClient {
                                                                  @PathVariable Integer customerId,
                                                                  @PathVariable String vendingName);
 
+    @RequestMapping(method = RequestMethod.GET, value = "/php/vendingListByCustomer/{customerId}", consumes = "application/json")
+    Map<String, String> vendingListByCustomerId(@PathVariable Integer customerId);
 }

@@ -10,7 +10,10 @@ import java.util.Map;
 
 @FeignClient(name = "vending-service")
 public interface VendingPHPClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/php/mongo/chart/{iCompanyId}", consumes = "application/json")
-    List<Map<String, Object>> getDataStockOut(@PathVariable Integer iCompanyId);
+    @RequestMapping(method = RequestMethod.GET, value = "/php/mongo/chart/extTotalProduct/{companyId}", consumes = "application/json")
+    List<Map<String, Object>> getDataStockOut(@PathVariable Integer companyId);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/php/mongo/chart/vendingStock/{vendingId}", consumes = "application/json")
+    List<Map<String, Object>> getDataVendingStock(@PathVariable String vendingId);
 
 }

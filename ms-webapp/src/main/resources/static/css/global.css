@@ -86,10 +86,10 @@
   left: 50%;
   transform: translateX(-50%);
   display: grid;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-left: solid 1px rgba(255, 255, 255, 0.3);
-  border-top: solid 1px rgba(255, 255, 255, 0.3);
-  box-shadow: 20px 20px 40px -6px rgba(255, 255, 255, 0.3);
+  background-color: rgba(67, 181, 214, 0.4);
+  border-left: solid 1px rgba(67, 181, 214, 0.4);
+  border-top: solid 1px rgba(67, 181, 214, 0.4);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 1em;
   gap: 1em;
@@ -123,7 +123,7 @@
   position: absolute;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-  color: #24476B;
+  color: #000000;
   font-weight: 500;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   top: 2em;
@@ -131,6 +131,9 @@
   text-transform: uppercase;
   width: 1.1em;
   white-space: nowrap;
+}
+.form_container input:-webkit-autofill {
+  background-color: rgba(67, 181, 214, 0.4);
 }
 .form_container input, .form_container textarea, .form_container select {
   width: 250px;
@@ -140,9 +143,9 @@
   border-radius: 1em;
   margin: 0.5em 0 1em;
   border: none;
-  border-left: solid 1px rgba(255, 255, 255, 0.3);
-  border-top: solid 1px rgba(255, 255, 255, 0.3);
-  color: #24476B;
+  border-left: solid 1px rgba(67, 181, 214, 0.4);
+  border-top: solid 1px rgba(67, 181, 214, 0.4);
+  color: #000000;
   font-size: 0.8em;
 }
 .form_container input.field_empty, .form_container textarea.field_empty, .form_container select.field_empty {
@@ -171,10 +174,10 @@ select:focus {
 }
 
 input[type=submit] {
-  color: #24476B;
+  color: #000000;
   backdrop-filter: blur(5px);
   width: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   border-radius: 3em;
   padding: 1em;
 }
@@ -188,7 +191,7 @@ input[type=submit]:active {
 button {
   backdrop-filter: blur(5px);
   background-color: transparent;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   color: white;
   padding: 0;
   border: 1px solid rgba(54, 58, 66, 0.5);
@@ -226,7 +229,7 @@ button.close {
   z-index: 2;
   right: 10%;
   position: fixed;
-  top: 23%;
+  top: 30%;
   background-color: #4E7EAC;
   font-size: 1em;
   text-transform: uppercase;
@@ -299,7 +302,7 @@ label {
   left: 1em;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-  color: #24476B;
+  color: #000000;
   font-weight: 500;
   opacity: 0.7;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -354,8 +357,8 @@ select + label, input[type=date] + label, #location + label {
 }
 .grid_container_form .input-form {
   border: none;
-  border-left: solid 1px rgba(255, 255, 255, 0.3);
-  border-top: solid 1px rgba(255, 255, 255, 0.3);
+  border-left: solid 1px rgba(67, 181, 214, 0.4);
+  border-top: solid 1px rgba(67, 181, 214, 0.4);
   width: 100%;
   padding: 5px;
   border-radius: 8px;
@@ -374,13 +377,13 @@ select + label, input[type=date] + label, #location + label {
   text-align: center;
 }
 .grid_container_form input[type=submit], .grid_container_form button {
-  color: #24476B;
+  color: #f4edde;
   padding: 12px 20px;
   cursor: pointer;
   width: auto;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(67, 181, 214, 0.4);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(67, 181, 214, 0.4);
 }
 .grid_container_form input[type=submit].update, .grid_container_form input[type=submit].delete, .grid_container_form input[type=submit].save, .grid_container_form input[type=submit].cancel, .grid_container_form button.update, .grid_container_form button.delete, .grid_container_form button.save, .grid_container_form button.cancel {
   padding: 0.5em 0.7em;
@@ -398,13 +401,13 @@ select + label, input[type=date] + label, #location + label {
 }
 .grid_container_form input[type=submit].update:disabled:hover, .grid_container_form input[type=submit].delete:disabled:hover, .grid_container_form input[type=submit].save:disabled:hover, .grid_container_form input[type=submit].cancel:disabled:hover, .grid_container_form button.update:disabled:hover, .grid_container_form button.delete:disabled:hover, .grid_container_form button.save:disabled:hover, .grid_container_form button.cancel:disabled:hover {
   transform: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 .grid_container_form input[type=submit].update, .grid_container_form button.update {
   background-color: #7588A5;
 }
 .grid_container_form input[type=submit].update:disabled:hover, .grid_container_form button.update:disabled:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 .grid_container_form input[type=submit].save, .grid_container_form button.save {
   background-color: #66BB6A;
@@ -414,7 +417,7 @@ select + label, input[type=date] + label, #location + label {
   background-color: rgb(229, 57, 53);
 }
 .grid_container_form input[type=submit].save:disabled:hover, .grid_container_form button.save:disabled:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   transform: translateY(0);
   animation: vibration 0.3s 0.2s 1;
 }
@@ -422,7 +425,7 @@ select + label, input[type=date] + label, #location + label {
   background-color: rgb(229, 57, 53);
 }
 .grid_container_form input[type=submit].delete:disabled:hover, .grid_container_form button.delete:disabled:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 .grid_container_form input[type=submit].cancel, .grid_container_form button.cancel {
   background-color: #BDBDBD;
@@ -484,6 +487,8 @@ select + label, input[type=date] + label, #location + label {
   right: 4.7em;
   bottom: 6.7em;
   border: solid 1px;
+  background-color: white;
+  z-index: -1;
 }
 .vendingGrid::before {
   content: "";
@@ -504,7 +509,7 @@ select + label, input[type=date] + label, #location + label {
 }
 .vendingGrid ul.plateau:hover {
   transform: scale(130%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   position: relative;
   z-index: 2;
   opacity: 1.1;
@@ -571,7 +576,7 @@ ul {
 }
 
 .Header {
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 10px rgba(255, 255, 255, 0.3);
   padding: 0.8em;
   width: 100%;
   position: fixed;
@@ -676,7 +681,7 @@ ul {
 }
 
 .Container {
-  background: #24476B;
+  background: #f4edde;
   min-height: 100vh;
   display: grid;
   padding-top: 8.6em;
@@ -727,14 +732,14 @@ ul {
 .Sidebar_links_link:any-link.selected {
   text-decoration: underline;
   background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   border-radius: 1em 1em 0 0;
 }
 .Sidebar_links_link:any-link:active {
   box-shadow: none;
 }
 .Sidebar_links_link:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   border-radius: 1em 1em 0 0;
 }
 .Sidebar_links_link_user {
@@ -776,7 +781,7 @@ ul {
   }
   .Sidebar_links_link:any-link.selected {
     text-decoration: underline;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
     font-size: 1.1em;
     backdrop-filter: blur(3px);
     position: relative;
@@ -785,7 +790,7 @@ ul {
     box-shadow: none;
   }
   .Sidebar_links_link:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
     font-size: 1.1em;
     backdrop-filter: blur(3px);
     position: relative;
@@ -813,8 +818,8 @@ ul {
 }
 .Main_title {
   font-weight: 800;
-  color: #F2F2F2;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.5);
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 0 0 1em 0;
@@ -1271,7 +1276,7 @@ h4 {
 .grid_container.vending:hover {
   border: 1px solid #363A42;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   position: relative;
 }
 .grid_container:first-child {
@@ -1302,7 +1307,7 @@ h4 {
   flex-direction: column;
   border: 1px solid #363A42;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 16px 32px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   position: relative;
   animation: pulse 5s 0.5s ease-in-out infinite alternate;
 }
@@ -1323,6 +1328,11 @@ h4 {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
+.list_stock {
+  background-color: white;
+  margin-bottom: 17px;
+}
+
 .hidden {
   display: none !important;
 }
@@ -1332,10 +1342,110 @@ h4 {
   font-size: 2em;
 }
 
+.welcome-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.welcome-section h1 {
+  font-size: 2em;
+  color: #0066cc;
+}
+.welcome-section img {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.Container_chart {
+  display: flex;
+}
+
+.minimized {
+  opacity: 0.5;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.Container_chart_option button {
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #00A3E0;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.Container_chart_option_box {
+  width: 80%;
+}
+
+.Container_chart_option button:hover {
+  background-color: #00A3E0;
+  color: #ffffff;
+}
+
+.Container_chart_option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: #f0f0f0;
+  width: 200px;
+  border-right: 2px solid #00A3E0;
+}
+
+.charts_vendings_btn.active + .hidden {
+  display: block;
+}
+
+.charts_vendings_customer_btn {
+  margin-left: 20px;
+}
+
+.charts_vendings_customer_vending_btn {
+  margin-left: 40px;
+}
+
+.charts_vendings_btn.selected,
+.charts_vendings_customer_btn.selected,
+.charts_vendings_customer_vending_btn.selected,
+.charts_totalIn_btn.selected,
+.charts_totalOut_btn.selected {
+  background-color: #00A3E0;
+  color: #ffffff;
+}
+
+.Container_chart_graph {
+  background-color: #faf5e6;
+  border-radius: 12px;
+  padding-left: 40px;
+  margin: 40px;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .chartContainer {
   margin-right: auto;
   margin-left: auto;
   align-self: center;
+}
+
+.containerError {
+  padding: 2em;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  height: 200px;
+  margin-left: auto;
+  background-color: #ed7474;
+  margin-right: auto;
+  border-radius: 14px;
+  border: solid 5px;
 }
 
 /*# sourceMappingURL=global.css.map */

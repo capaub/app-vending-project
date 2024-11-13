@@ -1,5 +1,6 @@
 package org.capaub.mswebapp.controller.ajax;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.capaub.mswebapp.service.ChartJSService;
 import org.springframework.stereotype.Controller;
@@ -17,18 +18,25 @@ public class ChartJSAjaxController {
 
     private final ChartJSService chartJSService;
 
-    @GetMapping("/globalStock/{companyId}")
-    public @ResponseBody ModelAndView globalStock(@PathVariable Integer companyId, Model model) {
+    @GetMapping("/stockIn")
+    public @ResponseBody ModelAndView globalStock(HttpSession session, Model model) {
+        Integer companyId = (Integer) session.getAttribute("companyId");
         String chart = chartJSService.getChartStockIn(companyId);
-        model.addAttribute("fragmentPath", "fragments/chartStock");
-        return new ModelAndView("index", "jsonData", chart);
+        return new ModelAndView("fragments/_chart", "jsonData", chart);
     }
 
-    @GetMapping("/stockOut/{companyId}")
-    public @ResponseBody ModelAndView stockOut(@PathVariable Integer companyId, Model model) {
+    @GetMapping("/stockOut")
+    public @ResponseBody ModelAndView stockOut(HttpSession session, Model model) {
+        Integer companyId = (Integer) session.getAttribute("companyId");
         String chart = chartJSService.getChartStockOut(companyId);
-        model.addAttribute("fragmentPath", "fragments/chartStock");
-        return new ModelAndView("index", "jsonData", chart);
+        return new ModelAndView("fragments/_chart", "jsonData", chart);
+    }
+
+
+    @GetMapping("/vendingStock/{vendingId}")
+    public @ResponseBody ModelAndView stockVending(@PathVariable String vendingId, Model model) {
+        String chart = chartJSService.getDataVendingStock(vendingId);
+        return new ModelAndView("fragments/_chart", "jsonData", chart);
     }
 
 }

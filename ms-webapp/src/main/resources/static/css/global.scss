@@ -378,6 +378,7 @@ ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
+
     &_vendings {
       display: flex;
       flex-wrap: wrap;
@@ -385,6 +386,7 @@ ul {
       gap: $gap;
       align-items: center;
     }
+
     &_infos {
       display: flex;
       flex-direction: column;
@@ -472,6 +474,7 @@ ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
+
     &_infos {
       @media screen and (max-width: 768px) {
         display: none;
@@ -889,7 +892,7 @@ h4 {
   }
 }
 
-.list_stock{
+.list_stock {
   background-color: white;
   margin-bottom: 17px;
 }
@@ -911,9 +914,31 @@ h4 {
   font-weight: bold;
   font-size: 2em;
 }
+////////////////////// WELCOME SECTION ///////////
 
+.welcome-section {
+  text-align: center;
+  margin-bottom: 30px;
+  & h1 {
+    font-size: 2em;
+    color: #0066cc;
+  }
+  & img{
+    width: 100%;
+    margin-top: 1em;
+  }
+}
 
 ////////////////////// CHART JS /////////////////
+
+.Container_chart {
+  display: flex;
+}
+.minimized {
+  opacity: 0.5;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
 
 .Container_chart_option button {
   background-color: #ffffff;
@@ -921,15 +946,17 @@ h4 {
   border: 2px solid #00A3E0;
   border-radius: 8px;
   padding: 10px 20px;
-  margin: 5px 0;
+  margin-bottom: 0.5em;
   font-size: 1em;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
 }
-.Container_chart_option_box{
-  width: 100%;
+
+.Container_chart_option_box {
+  width: 80%;
 }
+
 .Container_chart_option button:hover {
   background-color: #00A3E0;
   color: #ffffff;
@@ -949,33 +976,33 @@ h4 {
   display: block;
 }
 
-.charts_vendings_customer_btn, .charts_vendings_customer_vending_btn {
-  background-color: #ffffff;
-  color: #555;
-  border: 1px solid #00A3E0;
-  border-radius: 5px;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  margin: 5px 0;
-  width: 90%;
+.charts_vendings_customer_btn {
+  margin-left: 20px;
 }
 
-.charts_vendings_customer_btn:hover, .charts_vendings_customer_vending_btn:hover {
-  background-color: #00A3E0;
-  color: #ffffff;
+.charts_vendings_customer_vending_btn {
+  margin-left:  40px;
+}
+
+.charts_vendings_btn.selected,
+.charts_vendings_customer_btn.selected,
+.charts_vendings_customer_vending_btn.selected,
+.charts_totalIn_btn.selected,
+.charts_totalOut_btn.selected {
+    background-color: #00A3E0;
+    color: #ffffff;
 }
 
 .Container_chart_graph {
   background-color: #faf5e6;
   border-radius: 12px;
-  padding: 20px;
-  margin-left: 20px;
+  padding-left: 40px;
+  margin: 40px;
   flex-grow: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-.chartContainer{
+.chartContainer {
   margin-right: auto;
   margin-left: auto;
   align-self: center;
@@ -984,16 +1011,17 @@ h4 {
 
 //////////////////// ERROR /////////////////
 
-.containerError{
-    padding: 2em;
-    margin-top: 5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1em;
-    height: 200px;
-    margin-left: auto;
-    background-color: #ed7474;
-    margin-right: auto;
-    border-radius: 14px;
+.containerError {
+  padding: 2em;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  height: 200px;
+  margin-left: auto;
+  background-color: #ed7474;
+  margin-right: auto;
+  border-radius: 14px;
+  border: solid 5px;
 }
