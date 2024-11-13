@@ -3,7 +3,7 @@ package org.capaub.mscompany.controller;
 import lombok.AllArgsConstructor;
 import org.capaub.mscompany.service.AppUserService;
 import org.capaub.mscompany.service.dto.AppUserDTO;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +13,11 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class AppUserController {
     private final AppUserService appUserService;
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 
     @PostMapping("/create")
     public ResponseEntity<AppUserDTO> createUser(@RequestBody AppUserDTO appUserDTO) {
@@ -25,9 +30,10 @@ public class AppUserController {
         return appUserService.updateUser(appUserDTO);
     }
 
-    @PostMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         appUserService.deleteUser(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping("/{email}/update-connected-at")

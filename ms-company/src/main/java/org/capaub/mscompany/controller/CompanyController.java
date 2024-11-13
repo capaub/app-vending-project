@@ -2,6 +2,7 @@ package org.capaub.mscompany.controller;
 
 import org.capaub.mscompany.entity.Company;
 import org.capaub.mscompany.service.CompanyService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,11 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
     @PostMapping("/create")
     public ResponseEntity<Company> createCompany(@RequestBody Company company) {
         Company savedCompany = companyService.createCompany(company);

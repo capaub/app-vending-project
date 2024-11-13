@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>org.capaub</groupId>
     <artifactId>ms-external-api</artifactId>
@@ -98,6 +98,9 @@
                     <to>
                         <image>capaub/${project.artifactId}-vending-app</image>
                     </to>
+                    <container>
+                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>

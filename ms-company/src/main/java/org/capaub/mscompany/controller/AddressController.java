@@ -2,6 +2,7 @@ package org.capaub.mscompany.controller;
 
 import org.capaub.mscompany.service.AddressService;
 import org.capaub.mscompany.service.dto.AddressDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,11 @@ public class AddressController {
 
     public AddressController(AddressService addressService) {
         this.addressService = addressService;
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
     @PostMapping("/create")

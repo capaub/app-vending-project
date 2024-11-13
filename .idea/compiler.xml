@@ -14,7 +14,7 @@
         <module name="config-server-vending-app" />
         <module name="ms-external-api" />
       </profile>
-      <profile name="Annotation profile for ms-vending" enabled="true">
+      <profile name="Annotation profile for ms-product" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -22,10 +22,13 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar" />
         </processorPath>
+        <module name="ms-product" />
         <module name="ms-company" />
         <module name="ms-customer" />
-        <module name="ms-product" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

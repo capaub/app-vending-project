@@ -28,15 +28,17 @@ public class AppUserService {
 
 
     public AppUserDTO createUser(AppUserDTO appUserDTO) {
-        if (companyRepository.findById(appUserDTO.getCompanyId()).isEmpty()) {
+        Optional<Company> optCompany = companyRepository.findById(appUserDTO.getCompanyId());
+        if (optCompany.isEmpty()) {
             throw new IllegalArgumentException("Invalid company id");
         }
 
-        if (appUserRepository.findByEmail(appUserDTO.getEmail()).isPresent()) {
+        Optional<AppUser> optAppUser = appUserRepository.findByEmail(appUserDTO.getEmail());
+        if (optAppUser.isPresent()) {
             throw new IllegalArgumentException("Un utilisateur avec cet email existe déjà.");
         }
 
-        Company company = companyRepository.findById(appUserDTO.getCompanyId()).get();
+        Company company = optCompany.get();
 
         AppUser appUser = appUserMapper.toAppUser(appUserDTO);
         appUser.setCompany(company);
@@ -79,10 +81,11 @@ public class AppUserService {
     }
 
     public AppUserDTO getUserById(Integer id) {
-        if (appUserRepository.findById(id).isEmpty()) {
+        Optional<AppUser> optAppUSer = appUserRepository.findById(id);
+        if (optAppUSer.isEmpty()) {
             throw new IllegalArgumentException("Utilisateur introuvable.");
         }
-        AppUser appUser = appUserRepository.findById(id).get();
+        AppUser appUser = optAppUSer.get();
         return appUserMapper.toAppUserDTO(appUser);
     }
 
