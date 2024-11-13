@@ -76,7 +76,7 @@ services:
     image: capaub/ms-company-vending-app
     mem_limit: 700m
     ports:
-      - 8079:8079
+      - 8086:9092
     networks:
       - vending-app-network
     depends_on:
@@ -87,14 +87,14 @@ services:
       mysql:
         condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8079/actuator/health/readiness | grep UP || exit 1
+      test: curl --fail --silent localhost:9092/actuator/health/readiness | grep UP || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 10s
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_CONFIG_IMPORT: optional:configserver:http://configserver:9090/
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:9090/
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-vending-app:3306/vending_app
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:9091/eureka/
 
@@ -102,7 +102,7 @@ services:
     image: capaub/ms-customer-vending-app
     mem_limit: 700m
     ports:
-      - 8081:8081
+      - 8087:9093
     networks:
       - vending-app-network
     depends_on:
@@ -113,14 +113,14 @@ services:
       mysql:
         condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8081/actuator/health/readiness | grep UP || exit 1
+      test: curl --fail --silent localhost:9093/actuator/health/readiness | grep UP || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 10s
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_CONFIG_IMPORT: optional:configserver:http://configserver:9090/
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:9090/
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-vending-app:3306/vending_app
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:9091/eureka/
 
@@ -128,7 +128,7 @@ services:
     image: capaub/ms-external-api-vending-app
     mem_limit: 700m
     ports:
-      - 8182:8182
+      - 8088:9094
     networks:
       - vending-app-network
     depends_on:
@@ -136,10 +136,8 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
-      mysql:
-        condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8182/actuator/health/readiness | grep UP || exit 1
+      test: curl --fail --silent localhost:9094/actuator/health/readiness | grep UP || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
@@ -154,7 +152,7 @@ services:
     image: capaub/ms-product-vending-app
     mem_limit: 700m
     ports:
-      - 8089:8089
+      - 8089:9095
     networks:
       - vending-app-network
     depends_on:
@@ -167,7 +165,7 @@ services:
       external-api:
         condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8089/actuator/health/readiness | grep UP || exit 1
+      test: curl --fail --silent localhost:9095/actuator/health/readiness | grep UP || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
@@ -190,41 +188,44 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
-      mysql:
+      company:
+        condition: service_healthy
+      customer:
+        condition: service_healthy
+      product:
+        condition: service_healthy
+      mongo:
         condition: service_healthy
       external-api:
         condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8000/healthcheck.php || exit 1
+      test: curl --fail --silent vending-service:8000/healthcheck.php || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 10s
     environment:
+      MONGO_URI: mongodb://mongo-vending-app:27017/vending_app
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:9091/eureka/
 
-  webapp:
-    image: capaub/ms-webapp-vending-app
+  sprint-chart-js:
+    image: capaub/sprint-chart-js-vending-app
     mem_limit: 700m
     ports:
-      - 8099:8099
+      - 8090:9096
     networks:
       - vending-app-network
-    volumes:
-      - ./uploads:/app/uploads
     depends_on:
       eurekaserver:
         condition: service_healthy
       configserver:
         condition: service_healthy
-      external-api:
-        condition: service_healthy
-      product:
+      mysql:
         condition: service_healthy
       vending-service:
         condition: service_healthy
     healthcheck:
-      test: curl --fail --silent localhost:8099/actuator/health/readiness | grep UP || exit 1
+      test: curl --fail --silent localhost:9096/actuator/health/readiness | grep UP || exit 1
       interval: 10s
       timeout: 5s
       retries: 10
@@ -232,6 +233,44 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: optional:configserver:http://configserver:9090/
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-vending-app:3306/vending_app
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:9091/eureka/
+
+  webapp:
+    image: capaub/ms-webapp-vending-app
+    mem_limit: 700m
+    ports:
+      - 8091:9097
+    networks:
+      - vending-app-network
+    volumes:
+      - ./uploads:/uploads
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+      configserver:
+        condition: service_healthy
+      company:
+        condition: service_healthy
+      customer:
+        condition: service_healthy
+      external-api:
+        condition: service_healthy
+      product:
+        condition: service_healthy
+      vending-service:
+        condition: service_healthy
+      sprint-chart-js:
+        condition: service_healthy
+    healthcheck:
+      test: curl --fail --silent localhost:9097/actuator/health/readiness | grep UP || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:9090/
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:9091/eureka/
 
 #       docker-compose up -d permettra de démarrer l'ensemble des conteneurs en arrière-plan ;
@@ -240,13 +279,3 @@ services:
 #       docker-compose stop permettra d'arrêter l'ensemble des services d'une stack ;
 #       docker-compose down permettra de détruire l'ensemble des ressources d'une stack ;
 #       docker-compose config permettra de valider la syntaxe du fichier docker-compose.yml ;
-
-################################################## PHP #################################################################
-
-#  FROM php:8.2-cli
-#  WORKDIR /app
-#  COPY . /app
-#  RUN composer install
-#  CMD ["php", "/bin/console", "eureka:register"]
-
-#       php bin/console app:eureka:register => pour l'enregistrement de PHP au registre d'Eureka ;
