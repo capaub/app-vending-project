@@ -25,6 +25,7 @@ Thumbs.db
 # Racine
 ###############################################################################
 /ms-front/               # ignoré temporairement => Angular
+/security/               # ignoré temporairement => Sécurité dédié
 /uploads/                # fichiers upload générés
 
 ###############################################################################
