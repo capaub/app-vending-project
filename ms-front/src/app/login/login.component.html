@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Authentication</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form (submit)="login()">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <button type="submit">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

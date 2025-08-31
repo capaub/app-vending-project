@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: ms-company
+  config:
+    import: optional:configserver:http://localhost:9090/
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/vendo?createDatabaseIfNotExist=true
+    username: root
+    password: ACDS
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9091/eureka/
+
+server:
+  port: 8079

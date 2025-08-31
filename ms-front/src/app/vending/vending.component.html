@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Vending</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <mat-grid-list cols="4" rowHeight="100px">
+        @for (tile of tray; track tile) {
+          <mat-grid-tile
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            <div>{{tile.image}}</div>
+            <mat-grid-tile-footer>
+              <div>{{tile.location}}</div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+        }
+      </mat-grid-list>
+
+    </mat-card-content>
+  </mat-card>
+</div>
