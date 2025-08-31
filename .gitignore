@@ -1,1 +1,80 @@
-/ms-vending/
+###############################################################################
+# Service Java
+###############################################################################
+# OS / IDE
+**/.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Build / IDE temp / logs
+**/target/
+**/out/
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Node
+**/node_modules/
+
+# Docker (optionnel)
+**/.env.docker
+
+###############################################################################
+# Racine
+###############################################################################
+/ms-front/               # ignoré temporairement => Angular
+/uploads/                # fichiers upload générés
+
+###############################################################################
+# ms-webapp
+###############################################################################
+/ms-webapp/src/main/resources/static/chartJS/node_modules/
+
+###############################################################################
+# security
+###############################################################################
+/security/src/main/resources/certs/*.pem
+/security/src/main/resources/certs/*.key
+/security/src/main/resources/certs/*.jks
+/security/src/main/resources/certs/*.p12
+/security/TEST-ms-client-jwt-token/
+
+/security/RsaKeysConfig.java
+/security/SecService.java
+/security/testRestApi.java
+
+###############################################################################
+# ms-external-api (fichiers générés)
+###############################################################################
+/ms-external-api/src/main/resources/static/batchQrcode/
+/ms-external-api/src/main/resources/static/vendingQrcode/
+
+###############################################################################
+# Service Symfony : /ms-vending/
+###############################################################################
+
+# Environnements / secrets
+/ms-vending/.env.local
+/ms-vending/.env.*.local
+/ms-vending/.env.local.php
+/ms-vending/config/secrets/prod/prod.decrypt.private.php
+
+# Composer / cache / couverture
+/ms-vending/vendor/
+/ms-vending/var/
+/ms-vending/var/*.sqlite
+/ms-vending/var/data/
+/ms-vending/coverage/
+/ms-vending/composer.phar
+
+# PHPUnit
+/ms-vending/.phpunit.result.cache
+/ms-vending/phpunit.xml   # on versionne phpunit.xml.dist
+
+# Assets (AssetMapper / Encore)
+/ms-vending/public/assets/
+/ms-vending/public/build/
+/ms-vending/public/bundles/
+/ms-vending/assets/vendor/

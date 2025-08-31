@@ -16,6 +16,7 @@ public class Goods {
     private String barcode;
     private String brand;
     private String imgUrl;
+
     private Integer companyId;
 
     @Temporal(TemporalType.TIMESTAMP)
