@@ -1,41 +1,56 @@
-# Application Name
+# Vendo Logic — app-vending-project
 
-## Description
+**Suite microservices** pour gérer un parc de **distributeurs automatiques** (entreprises, sites/clients, produits, machines, intégrations externes, webapp).  
+Stack principale : **Java 17 · Spring Boot 3 · Spring Cloud (Eureka, Config Server)**.
 
-This project is an application for managing vending. It is built using a microservices architecture with Java, Spring Boot, and MySQL. The application provides help for vending business and offers a REST API documented with Swagger.
+> Ce dépôt est la **refonte microservices** du monolithe PHP :  
+> Legacy → https://github.com/capaub/Vendo_Logic
 
-## Prerequisites
+---
 
-Before you begin, ensure you have the following installed on your machine:
+## ⚙️ Modules (ceux présents dans ce repo)
 
-- [Java 17 or higher](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- [Maven](https://maven.apache.org/)
-- [MySQL](https://dev.mysql.com/downloads/)
-- [Docker](https://www.docker.com/get-started) (optional, for containerized execution)
+- **eureka-server-vending-app** — Service Discovery (Eureka)
+- **config-server-vending-app** — Configuration centralisée (Spring Cloud Config)
+- **ms-company** — gestion des entreprises / utilisateurs
+- **ms-customer** — gestion des clients / sites d’installation
+- **ms-product** — gestion des produits
+- **ms-vending** — gestion des machines / emplacements
+- **ms-external-api** — intégrations externes (ex : catalogues/données publiques)
+- **ms-webapp** — application web (UI)
+- **sprint-chart-js** — ressources front (charts/démo)
 
-## Installation
+> La liste ci-dessus reprend exactement les dossiers de la racine du dépôt.
 
-### Step 1: Clone the repository
+---
 
-```bash
-git clone https://github.com/capaub/vendo_logic.git
-cd project-name
+## 🧭 Architecture (vue simplifiée)
 
+```mermaid
+flowchart LR
+  WebApp[ms-webapp] --> Company[ms-company]
+  WebApp --> Customer[ms-customer]
+  WebApp --> Product[ms-product]
+  WebApp --> Vending[ms-vending]
+  WebApp -.intégrations.-> Ext[ms-external-api]
 
+  subgraph Infra
+    Eureka[(Eureka)]
+    Config[(Config Server)]
+    DB[(DBs)]
+  end
 
+  Company --- DB
+  Customer --- DB
+  Product --- DB
+  Vending --- DB
 
+  Company --> Eureka
+  Customer --> Eureka
+  Product --> Eureka
+  Vending --> Eureka
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  Company --> Config
+  Customer --> Config
+  Product --> Config
+  Vending --> Config
