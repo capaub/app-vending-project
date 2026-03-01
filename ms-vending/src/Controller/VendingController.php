@@ -123,6 +123,11 @@ class VendingController
     /**
      * @param string $iVendingId
      * @return JsonResponse
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
      */
     #[Route('/php/buildVending/{iVendingId}', methods: ['GET'])]
     public function buildVending(string $iVendingId): JsonResponse
@@ -155,7 +160,6 @@ class VendingController
 
     /**
      * @param string $iVendingId
-     * @return array
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
      * @throws RedirectionExceptionInterface
@@ -164,6 +168,7 @@ class VendingController
      */
     #[Route('/testVending/{iVendingId}', methods: ['GET'])]
     public function getVendingData(string $iVendingId): JsonResponse
+
     {
         $vendingDocument = $this->mongoDBVendingService->findOneBy(['_id' => new ObjectId($iVendingId)]);
 

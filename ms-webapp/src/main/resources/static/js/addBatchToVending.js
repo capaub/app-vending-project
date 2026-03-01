@@ -119,3 +119,9 @@ function hideAddBatchForm() {
 }
 
 //TODO implémenter jsQR avec les media d'HTML 5 pour facilité l'ajout d'un lot
+
+const item = document.querySelector(".card");
+if (item) {
+    console.log(item.dataset.id); // Résultat en console : "42"
+    item.dataset.state = "active";
+}

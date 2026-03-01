@@ -5,11 +5,11 @@ FROM php:8.2-cli
 MAINTAINER capaub
 
 # Installe les extensions nécessaires
-RUN apt-get update && \
-    apt-get install -y zip unzip git libssl-dev && \
-    docker-php-ext-install pcntl pdo_mysql && \
-    pecl install mongodb && \
-    docker-php-ext-enable mongodb
+RUN apt-get update \
+    && apt-get install -y zip unzip git libssl-dev \
+    && docker-php-ext-install pcntl pdo_mysql \
+    && pecl install mongodb-1.19.0 \
+    && docker-php-ext-enable mongodb
 
 # Définit le répertoire de travail
 WORKDIR /app

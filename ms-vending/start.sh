@@ -1,8 +1,14 @@
 #!/bin/bash
 
 # Execute les migrations
-php /app/bin/console doctrine:migrations:diff --no-interaction
-php /app/bin/console doctrine:migrations:migrate --no-interaction
+# php /app/bin/console doctrine:migrations:diff --no-interaction
+# php /app/bin/console doctrine:migrations:migrate --no-interaction
+if [ -d "migrations" ] && [ "$(ls -A migrations 2>/dev/null)" ]; then
+  echo "[INFO] Running Doctrine migrations…"
+  php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration || true
+else
+  echo "[INFO] No Doctrine migrations found. Skipping migrate."
+fi
 
 # Démarre le serveur PHP en arrière-plan
 php -S 0.0.0.0:8000 -t public &
@@ -15,3 +21,4 @@ php /app/bin/console app:eureka:register
 
 # Garde le conteneur en cours d'exécution
 tail -f /dev/null
+

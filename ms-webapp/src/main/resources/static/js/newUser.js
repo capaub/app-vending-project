@@ -46,7 +46,7 @@ function newUser(formNewUser) {
         }
     });
 
-    const { csrfToken, csrfHeader } = getCsrfToken();
+    const {csrfToken, csrfHeader} = getCsrfToken();
 
     if (formNewUser.checkValidity()) {
         const btn = document.querySelector('.newUserSubmit');
@@ -57,7 +57,7 @@ function newUser(formNewUser) {
         fetch(url.toString(), {
             method: 'POST',
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
                 [csrfHeader]: csrfToken
             },
             body: JSON.stringify(formObject)
